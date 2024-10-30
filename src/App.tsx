@@ -5,7 +5,6 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import './App.css';
 
 
-
 function App() {
   const [message, setMessage] = useState("")
   const backendUrl = 'http://northkevin-backend-2.us-west-1.elasticbeanstalk.com';
@@ -32,7 +31,7 @@ function App() {
             <FaLinkedin size={40} />
           </a>
           <a
-            href="https://github.com/northkevin.com"
+            href="https://github.com/northkevin"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white-800 hover:text-gray-600"
