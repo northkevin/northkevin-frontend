@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
+
 function App() {
+  const [message, setMessage] = useState("")
+  const backendUrl = 'http://northkevin-backend-2.us-west-1.elasticbeanstalk.com';
+
+  useEffect(() => {
+    fetch(`${backendUrl}/api/hello`)
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -16,8 +27,8 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-
         </a>
+        <p>{message}</p>
       </header>
     </div>
   );
