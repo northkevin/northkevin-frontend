@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import portrait from './kevin-portrait.jpg';
-import { FaLinkedin, FaGithub, FaAws, FaJava } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaAws, FaJava, FaEnvelope } from 'react-icons/fa';
 import {
   SiTypescript,
   SiReact,
@@ -77,12 +77,36 @@ function App() {
           </div>
 
           {/* Image Container */}
-          <div className="flex justify-center md:justify-end flex-1">
+          <div className="flex flex-col items-center md:items-center flex-1">
             <img
               src={portrait}
               alt="Kevin"
-              className="max-w-md rounded-full"
+              className="max-w-md rounded-full mb-6"
             />
+            <div className="flex space-x-4 justify-center">
+              <a
+                href="https://www.linkedin.com/in/kevin-north"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800"
+              >
+                <FaLinkedin size={24} />
+              </a>
+              <a
+                href="https://github.com/northkevin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <FaGithub size={24} />
+              </a>
+              <a
+                href="mailto:contact@northkevin.com"
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <FaEnvelope size={24} />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -170,25 +194,16 @@ function App() {
 
         {/* Footer */}
         <div className="mt-auto py-6 text-center">
-          <div className="flex space-x-6 justify-center">
-            <a
-              href="https://www.linkedin.com/in/kevin-north"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800"
-            >
-              <FaLinkedin size={40} />
-            </a>
-            <a
-              href="https://github.com/northkevin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-gray-600"
-            >
-              <FaGithub size={40} />
-            </a>
+          <div className="flex flex-col items-center justify-center space-y-2">
+            <p className="text-sm text-gray-400">
+              Built with React & Tailwind CSS • Deployed on AWS
+            </p>
+            <p className="text-sm text-gray-400">
+              © {new Date().getFullYear()} Kevin North • All rights reserved
+            </p>
           </div>
         </div>
+
       </header>
     </div>
   );
