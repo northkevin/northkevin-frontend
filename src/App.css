@@ -20,3 +20,24 @@
     transform: rotate(360deg);
   }
 }
+
+.tech-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100px; /* Fixed width */
+  text-align: center; /* Center the text */
+}
+
+.tech-label {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  word-wrap: break-word; /* Allows words to break and wrap */
+  hyphens: auto; /* Enables hyphenation */
+}
+
+.tech-icon-container:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease-in-out;
+}

@@ -15,3 +15,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.tech-icon-container-small {
+  @apply flex flex-col items-center justify-center relative;
+}
+
+.tech-label-small {
+  @apply opacity-0 group-hover:opacity-100 absolute -bottom-6 text-sm transition-opacity duration-200 whitespace-nowrap;
+}
