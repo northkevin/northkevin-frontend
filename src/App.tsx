@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import portrait from './kevin-portrait.jpg';
+// import portrait from './kevin-portrait.jpg';
 import { FaLinkedin, FaGithub, FaAws, FaJava, FaEnvelope } from 'react-icons/fa';
 import {
   SiTypescript,
@@ -8,6 +8,7 @@ import {
   SiNodedotjs,
   SiPython,
   SiTerraform,
+  SiPostgresql
 } from 'react-icons/si';
 
 import './index.css';
@@ -52,6 +53,10 @@ function App() {
                     <span className="tech-label-small">Elixir</span>
                   </div>
                   <div className="tech-icon-container-small group">
+                    <SiPostgresql size={30} className="group-hover:text-purple-500 transition-colors" />
+                    <span className="tech-label-small">PostgresSQL</span>
+                  </div>
+                  <div className="tech-icon-container-small group">
                     <SiNodedotjs size={30} className="group-hover:text-green-500 transition-colors" />
                     <span className="tech-label-small">Node.js</span>
                   </div>
@@ -79,9 +84,9 @@ function App() {
           {/* Image Container */}
           <div className="flex flex-col items-center md:items-center flex-1">
             <img
-              src={portrait}
+              src={"/kevin-portrait.jpg"}
               alt="Kevin"
-              className="max-w-md rounded-full mb-6"
+              className="w-full max-w-[300px] rounded-full mb-6"
             />
             <div className="flex space-x-4 justify-center">
               <a
@@ -177,7 +182,7 @@ function App() {
                     claims processing, and surety bonds across diverse technology stacks.
                     Delivered high-stakes solutions that balanced lightning-fast policy processing,
                     precision-focused claims handling, and complex surety systems,
-                    demonstrating how technical excellence drives bottom-line business impact."
+                    demonstrating how technical excellence drives bottom-line business impact.
                   </p>
                 </div>
                 <div className="order-1 aspect-video">
