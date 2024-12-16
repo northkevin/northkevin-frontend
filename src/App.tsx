@@ -53,7 +53,7 @@ function App() {
                     <span className="tech-label-small">Elixir</span>
                   </div>
                   <div className="tech-icon-container-small group">
-                    <SiPostgresql size={30} className="group-hover:text-purple-500 transition-colors" />
+                    <SiPostgresql size={30} className="group-hover:text-teal-500 transition-colors" />
                     <span className="tech-label-small">PostgresSQL</span>
                   </div>
                   <div className="tech-icon-container-small group">
@@ -69,11 +69,11 @@ function App() {
                     <span className="tech-label-small">Terraform</span>
                   </div>
                   <div className="tech-icon-container-small group">
-                    <SiPython size={30} className="group-hover:text-purple-600 transition-colors" />
+                    <SiPython size={30} className="group-hover:text-blue-600 transition-colors" />
                     <span className="tech-label-small">Python</span>
                   </div>
                   <div className="tech-icon-container-small group">
-                    <FaJava size={30} className="group-hover:text-purple-600 transition-colors" />
+                    <FaJava size={30} className="group-hover:text-orange-600 transition-colors" />
                     <span className="tech-label-small">Java</span>
                   </div>
                 </div>
