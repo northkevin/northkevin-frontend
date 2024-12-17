@@ -26,13 +26,19 @@ function App() {
   // TODO: Get this from the backend
   const recentLearnings = [
     {
-      id: 1,
+      id: 3,
+      date: '2024-12-17',
+      content: 'I began to wonder if creating a cache of promises would be a good idea, versus using memory to store expiration dates.  Promise.all() allows a maximum of 2 million promises at one time, V8 engine theoretically allows as many as the number of CPU cores, available RAM, and network bandwidth will allow.',
+      tags: ['javascript', 'til', 'leetcode']
+    },
+    {
+      id: 2,
       date: '2024-12-16',
       content: 'Learned javascript\'s native setInterval() executes the given function in the next tick of the event loop.',
       tags: ['javascript', 'til', 'leetcode']
     },
     {
-      id: 2,
+      id: 1,
       date: '2024-12-15',
       content: 'og-image.jpg files can be used for social media link previews. Created mine using a free figma.com account and exported as JPG.',
       tags: ['web', 'seo', 'figma', 'til']
