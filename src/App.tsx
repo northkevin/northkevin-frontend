@@ -23,6 +23,22 @@ function App() {
       .then((data) => setMessage(data.message));
   }, []);
 
+  // TODO: Get this from the backend
+  const recentLearnings = [
+    {
+      id: 1,
+      date: '2024-12-16',
+      content: 'Learned javascript\'s native setInterval() executes the given function in the next tick of the event loop.',
+      tags: ['javascript', 'til', 'leetcode']
+    },
+    {
+      id: 2,
+      date: '2024-12-15',
+      content: 'og-image.png files are used for social media link previews. Created mine using a free figma.com account and exported as JPG.',
+      tags: ['web', 'seo', 'figma', 'til']
+    }
+  ];
+
   return (
     <div className="App flex flex-col min-h-screen">
       <header className="flex-1 flex flex-col items-center justify-center bg-gray-800 text-white">
@@ -78,6 +94,41 @@ function App() {
                   </div>
                 </div>
               </div>
+
+              {/* Today I Learned Section - now more compact and aligned */}
+              <div className="w-full max-w-sm mt-8">
+                <h2 className="text-xl font-bold mb-4 text-blue-400">Today I Learned</h2>
+                <div className="space-y-3">
+                  {recentLearnings.slice(0, 2).map((learning) => (
+                    <div
+                      key={learning.id}
+                      className="bg-gray-700 rounded-lg p-3 hover:bg-gray-600 transition-colors"
+                    >
+                      <div className="flex items-start justify-between">
+                        <p className="text-sm text-gray-300">
+                          {learning.content}
+                        </p>
+                        <span className="text-xs text-gray-400 ml-4 whitespace-nowrap">
+                          {new Date(learning.date).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric'
+                          })}
+                        </span>
+                      </div>
+                      <div className="mt-2 flex gap-2">
+                        {learning.tags.map(tag => (
+                          <span
+                            key={tag}
+                            className="text-xs px-2 py-0.5 bg-gray-800 text-blue-400 rounded-full"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -114,6 +165,10 @@ function App() {
             </div>
           </div>
         </div>
+
+
+
+
 
         {/* Work Experience Section */}
         <div className="w-full bg-gray-900 py-20">
