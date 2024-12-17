@@ -34,7 +34,7 @@ function App() {
     {
       id: 2,
       date: '2024-12-15',
-      content: 'og-image.png files are used for social media link previews. Created mine using a free figma.com account and exported as JPG.',
+      content: 'og-image.jpg files can be used for social media link previews. Created mine using a free figma.com account and exported as JPG.',
       tags: ['web', 'seo', 'figma', 'til']
     }
   ];
