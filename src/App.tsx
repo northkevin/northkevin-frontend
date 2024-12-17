@@ -8,7 +8,8 @@ import {
   SiNodedotjs,
   SiPython,
   SiTerraform,
-  SiPostgresql
+  SiPostgresql,
+  SiLeetcode
 } from 'react-icons/si';
 
 import './index.css';
@@ -16,6 +17,8 @@ import './index.css';
 function App() {
   const [message, setMessage] = useState('');
   const backendUrl = 'http://northkevin-backend-2.us-west-1.elasticbeanstalk.com';
+
+  const [expandedLearnings, setExpandedLearnings] = useState<number[]>([]);
 
   useEffect(() => {
     fetch(`${backendUrl}/api/hello`)
@@ -28,8 +31,15 @@ function App() {
     {
       id: 3,
       date: '2024-12-17',
-      content: 'I began to wonder if creating a cache of promises would be a good idea, versus using memory to store expiration dates.  Promise.all() allows a maximum of 2 million promises at one time, V8 engine theoretically allows as many as the number of CPU cores, available RAM, and network bandwidth will allow.',
-      tags: ['javascript', 'til', 'leetcode']
+      content: 'I was surprised to learn that Chrome browser has no limit on number of promises that can be running at once.  If we don\'t care about durations of a cache existing beyond a single DOM session, it will be faster to use promises for timing out keys than using a Map with expiration dates.',
+      // tags: ['javascript', 'til', 'leetcode'],
+      links: [
+        {
+          text: 'Cache With Time Limit',
+          url: 'https://leetcode.com/problems/cache-with-time-limit/submissions/1481479162',
+          type: 'leetcode'
+        }
+      ]
     },
     {
       id: 2,
@@ -48,98 +58,125 @@ function App() {
   return (
     <div className="App flex flex-col min-h-screen">
       <header className="flex-1 flex flex-col items-center justify-center bg-gray-800 text-white">
-        {/* Hero Section with Intro and Tech Stack */}
-        <div className="mx-auto flex flex-col md:flex-row items-center justify-center flex-wrap p-6 mb-20 max-w-7xl w-full">
-          {/* Info + Tech Stack Container */}
+        {/* Hero Section Container */}
+        <div className="mx-auto flex flex-col md:flex-row items-start justify-center flex-wrap p-6 mb-20 max-w-7xl w-full">
+          {/* Info Container */}
           <div className="flex flex-col flex-1 text-left px-8">
-            <div className="w-full mb-8">
-              <h1 className="text-4xl font-bold mb-4">Hi, I'm Kevin</h1>
-              <p className="text-xl font-semibold mb-6">
-                Software engineer and certified duct tape programmer
-              </p>
+            {/* Main Intro */}
+            <h1 className="text-4xl font-bold mb-4">Hi, I'm Kevin</h1>
+            <p className="text-xl font-semibold mb-6">
+              Software engineer and certified duct tape programmer
+            </p>
 
-              {/* Tech Stack Section */}
-              <div className="w-full">
-                <h2 className="text-xl font-bold mb-4 text-blue-400">Weapons of Choice</h2>
-                <div className="flex flex-wrap gap-4">
-                  <div className="tech-icon-container-small group">
-                    <SiTypescript size={30} className="group-hover:text-blue-500 transition-colors" />
-                    <span className="tech-label-small">TypeScript</span>
-                  </div>
-                  <div className="tech-icon-container-small group">
-                    <SiReact size={30} className="group-hover:text-cyan-400 transition-colors" />
-                    <span className="tech-label-small">React</span>
-                  </div>
-                  <div className="tech-icon-container-small group">
-                    <SiElixir size={30} className="group-hover:text-purple-500 transition-colors" />
-                    <span className="tech-label-small">Elixir</span>
-                  </div>
-                  <div className="tech-icon-container-small group">
-                    <SiPostgresql size={30} className="group-hover:text-teal-500 transition-colors" />
-                    <span className="tech-label-small">PostgresSQL</span>
-                  </div>
-                  <div className="tech-icon-container-small group">
-                    <SiNodedotjs size={30} className="group-hover:text-green-500 transition-colors" />
-                    <span className="tech-label-small">Node.js</span>
-                  </div>
-                  <div className="tech-icon-container-small group">
-                    <FaAws size={30} className="group-hover:text-orange-400 transition-colors" />
-                    <span className="tech-label-small">AWS</span>
-                  </div>
-                  <div className="tech-icon-container-small group">
-                    <SiTerraform size={30} className="group-hover:text-purple-600 transition-colors" />
-                    <span className="tech-label-small">Terraform</span>
-                  </div>
-                  <div className="tech-icon-container-small group">
-                    <SiPython size={30} className="group-hover:text-blue-600 transition-colors" />
-                    <span className="tech-label-small">Python</span>
-                  </div>
-                  <div className="tech-icon-container-small group">
-                    <FaJava size={30} className="group-hover:text-orange-600 transition-colors" />
-                    <span className="tech-label-small">Java</span>
-                  </div>
+            {/* Tech Stack Section - adjusted spacing */}
+            <div className="w-full mb-8">
+              <h2 className="text-xl font-bold mb-4 text-blue-400">Weapons of Choice</h2>
+              <div className="flex flex-wrap gap-4">
+                <div className="tech-icon-container-small group">
+                  <SiTypescript size={30} className="group-hover:text-blue-500 transition-colors" />
+                  <span className="tech-label-small">TypeScript</span>
+                </div>
+                <div className="tech-icon-container-small group">
+                  <SiReact size={30} className="group-hover:text-cyan-400 transition-colors" />
+                  <span className="tech-label-small">React</span>
+                </div>
+                <div className="tech-icon-container-small group">
+                  <SiElixir size={30} className="group-hover:text-purple-500 transition-colors" />
+                  <span className="tech-label-small">Elixir</span>
+                </div>
+                <div className="tech-icon-container-small group">
+                  <SiPostgresql size={30} className="group-hover:text-teal-500 transition-colors" />
+                  <span className="tech-label-small">PostgresSQL</span>
+                </div>
+                <div className="tech-icon-container-small group">
+                  <SiNodedotjs size={30} className="group-hover:text-green-500 transition-colors" />
+                  <span className="tech-label-small">Node.js</span>
+                </div>
+                <div className="tech-icon-container-small group">
+                  <FaAws size={30} className="group-hover:text-orange-400 transition-colors" />
+                  <span className="tech-label-small">AWS</span>
+                </div>
+                <div className="tech-icon-container-small group">
+                  <SiTerraform size={30} className="group-hover:text-purple-600 transition-colors" />
+                  <span className="tech-label-small">Terraform</span>
+                </div>
+                <div className="tech-icon-container-small group">
+                  <SiPython size={30} className="group-hover:text-blue-600 transition-colors" />
+                  <span className="tech-label-small">Python</span>
+                </div>
+                <div className="tech-icon-container-small group">
+                  <FaJava size={30} className="group-hover:text-orange-600 transition-colors" />
+                  <span className="tech-label-small">Java</span>
                 </div>
               </div>
+            </div>
 
-              {/* Today I Learned Section - now more compact and aligned */}
-              <div className="w-full max-w-sm mt-8">
-                <h2 className="text-xl font-bold mb-4 text-blue-400">Today I Learned</h2>
-                <div className="space-y-3">
-                  {recentLearnings.slice(0, 2).map((learning) => (
-                    <div
-                      key={learning.id}
-                      className="bg-gray-700 rounded-lg p-3 hover:bg-gray-600 transition-colors"
-                    >
-                      <div className="flex items-start justify-between">
-                        <p className="text-sm text-gray-300">
+            {/* Brain Upgrades Section - refined width and spacing */}
+            <div className="w-full max-w-sm">
+              <h2 className="text-xl font-bold mb-4 text-blue-400">Brain Upgrades</h2>
+              <div className="space-y-3">
+                {recentLearnings.slice(0, 2).map((learning) => (
+                  <div
+                    key={learning.id}
+                    className="bg-gray-700 rounded-lg p-3 hover:bg-gray-600 transition-colors"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <p className={`text-sm text-gray-300 ${expandedLearnings.includes(learning.id) ? '' : 'line-clamp-2'}`}>
                           {learning.content}
                         </p>
-                        <span className="text-xs text-gray-400 ml-4 whitespace-nowrap">
-                          {new Date(learning.date).toLocaleDateString('en-US', {
-                            month: 'short',
-                            day: 'numeric'
-                          })}
-                        </span>
-                      </div>
-                      <div className="mt-2 flex gap-2">
-                        {learning.tags.map(tag => (
-                          <span
-                            key={tag}
-                            className="text-xs px-2 py-0.5 bg-gray-800 text-blue-400 rounded-full"
+                        {learning.content.length > 100 && (
+                          <button
+                            onClick={() => {
+                              setExpandedLearnings(prev =>
+                                prev.includes(learning.id)
+                                  ? prev.filter(id => id !== learning.id)
+                                  : [...prev, learning.id]
+                              );
+                            }}
+                            className="text-xs text-blue-400 hover:text-blue-300 mt-1"
                           >
-                            #{tag}
-                          </span>
-                        ))}
+                            {expandedLearnings.includes(learning.id) ? 'See less' : 'See more'}
+                          </button>
+                        )}
                       </div>
+                      <span className="text-xs text-gray-400 ml-4 whitespace-nowrap">
+                        {new Date(learning.date).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric'
+                        })}
+                      </span>
                     </div>
-                  ))}
-                </div>
+                    <div className="mt-2 flex gap-2">
+                      {learning?.tags?.length && learning.tags.map(tag => (
+                        <span
+                          key={tag}
+                          className="text-xs px-2 py-0.5 bg-gray-800 text-blue-400 rounded-full"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                    {learning.links && learning.links.map(link => (
+                      <a
+                        key={link.url}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 text-sm text-blue-400 hover:text-blue-300 flex items-center gap-2"
+                      >
+                        {link.type === 'leetcode' && <SiLeetcode className="w-4 h-4" />}
+                        {link.text}
+                      </a>
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Image Container */}
-          <div className="flex flex-col items-center md:items-center flex-1">
+          {/* Image Container - Now with fixed positioning */}
+          <div className="flex flex-col items-center md:items-center flex-1 md:sticky md:top-8">
             <img
               src={"/kevin-portrait.jpg"}
               alt="Kevin"
@@ -171,10 +208,6 @@ function App() {
             </div>
           </div>
         </div>
-
-
-
-
 
         {/* Work Experience Section */}
         <div className="w-full bg-gray-900 py-20">
