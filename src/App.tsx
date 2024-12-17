@@ -142,8 +142,10 @@ function App() {
                       </div>
                       <span className="text-xs text-gray-400 ml-4 whitespace-nowrap">
                         {new Date(learning.date).toLocaleDateString('en-US', {
+                          weekday: 'short',
                           month: 'short',
-                          day: 'numeric'
+                          day: 'numeric',
+                          timeZone: 'UTC'
                         })}
                       </span>
                     </div>
