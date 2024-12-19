@@ -74,12 +74,12 @@ function App() {
           <div className="flex flex-col flex-1 text-left px-8">
             {/* Main Intro */}
             <h1 className="text-4xl font-bold mb-4">Hi, I'm Kevin</h1>
-            <p className="text-xl font-semibold mb-6">
+            <p className="text-xl font-semibold mb-8">
               Software engineer and certified duct tape programmer
             </p>
 
             {/* Tech Stack Section - adjusted spacing */}
-            <div className="w-full mb-8">
+            <div className="w-full">
               <h2 className="text-xl font-bold mb-4 text-blue-400">Weapons of Choice</h2>
               <div className="flex flex-wrap gap-4">
                 <div className="tech-icon-container-small group">
@@ -118,71 +118,6 @@ function App() {
                   <FaJava size={30} className="group-hover:text-orange-600 transition-colors" />
                   <span className="tech-label-small">Java</span>
                 </div>
-              </div>
-            </div>
-
-            {/* Brain Upgrades Section - refined width and spacing */}
-            <div className="w-full max-w-sm">
-              <h2 className="text-xl font-bold mb-4 text-blue-400">Brain Upgrades</h2>
-              <div className="space-y-3">
-                {recentLearnings.slice(0, 2).map((learning) => (
-                  <div
-                    key={learning.id}
-                    className="bg-gray-700 rounded-lg p-3 hover:bg-gray-600 transition-colors"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <p className={`text-sm text-gray-300 ${expandedLearnings.includes(learning.id) ? '' : 'line-clamp-2'}`}>
-                          {learning.content}
-                        </p>
-                        {learning.content.length > 100 && (
-                          <button
-                            onClick={() => {
-                              setExpandedLearnings(prev =>
-                                prev.includes(learning.id)
-                                  ? prev.filter(id => id !== learning.id)
-                                  : [...prev, learning.id]
-                              );
-                            }}
-                            className="text-xs text-blue-400 hover:text-blue-300 mt-1"
-                          >
-                            {expandedLearnings.includes(learning.id) ? 'See less' : 'See more'}
-                          </button>
-                        )}
-                      </div>
-                      <span className="text-xs text-gray-400 ml-4 whitespace-nowrap">
-                        {new Date(learning.date).toLocaleDateString('en-US', {
-                          weekday: 'short',
-                          month: 'short',
-                          day: 'numeric',
-                          timeZone: 'UTC'
-                        })}
-                      </span>
-                    </div>
-                    <div className="mt-2 flex gap-2">
-                      {learning?.tags?.length && learning.tags.map(tag => (
-                        <span
-                          key={tag}
-                          className="text-xs px-2 py-0.5 bg-gray-800 text-blue-400 rounded-full"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                    {learning.links && learning.links.map(link => (
-                      <a
-                        key={link.url}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2 text-sm text-blue-400 hover:text-blue-300 flex items-center gap-2"
-                      >
-                        {link.type === 'leetcode' && <SiLeetcode className="w-4 h-4" />}
-                        {link.text}
-                      </a>
-                    ))}
-                  </div>
-                ))}
               </div>
             </div>
           </div>
@@ -299,6 +234,81 @@ function App() {
                   />
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* New Brain Upgrades Section */}
+        <div className="w-full bg-gray-800 py-20">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold">
+                Brain Upgrades
+              </h2>
+              <span className="text-xl text-blue-400 mt-2 block">
+                Recent learnings and discoveries
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {recentLearnings.map((learning) => (
+                <div
+                  key={learning.id}
+                  className="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <p className={`text-sm text-gray-300 ${expandedLearnings.includes(learning.id) ? '' : 'line-clamp-2'}`}>
+                        {learning.content}
+                      </p>
+                      {learning.content.length > 100 && (
+                        <button
+                          onClick={() => {
+                            setExpandedLearnings(prev =>
+                              prev.includes(learning.id)
+                                ? prev.filter(id => id !== learning.id)
+                                : [...prev, learning.id]
+                            );
+                          }}
+                          className="text-xs text-blue-400 hover:text-blue-300 mt-1"
+                        >
+                          {expandedLearnings.includes(learning.id) ? 'See less' : 'See more'}
+                        </button>
+                      )}
+                    </div>
+                    <span className="text-xs text-gray-400 ml-4 whitespace-nowrap">
+                      {new Date(learning.date).toLocaleDateString('en-US', {
+                        weekday: 'short',
+                        month: 'short',
+                        day: 'numeric',
+                        timeZone: 'UTC'
+                      })}
+                    </span>
+                  </div>
+                  <div className="mt-2 flex gap-2">
+                    {learning?.tags?.length && learning.tags.map(tag => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2 py-0.5 bg-gray-800 text-blue-400 rounded-full"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                  {learning.links && learning.links.map(link => (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 text-sm text-blue-400 hover:text-blue-300 flex items-center gap-2"
+                    >
+                      {link.type === 'leetcode' && <SiLeetcode className="w-4 h-4" />}
+                      {link.text}
+                    </a>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
         </div>
