@@ -28,14 +28,14 @@ function App() {
   // TODO: Get this from the backend
   const recentLearnings = [
     {
-      id: 4,
-      date: '2024-12-18',
-      content: 'Wrote a leetcode solution for writing Promise.all() in parallel, with O(n) time & O(n) space complexity.',
+      id: 5,
+      date: '2024-12-19',
+      content: 'I\'m not a designer, but I\'m learning.  My sister is a recent college grad from NAU for a degree in Graphic Design.  I\'m proud of her and when I implemented her feedback for this website, I was shocked at how much better it looked.',
       links: [
         {
-          text: 'Execute Asynchronous Functions in Parallel',
-          url: 'https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/solutions/6161593/execute-asynchronous-functions-in-parall-outt',
-          type: 'leetcode'
+          text: 'Karina\'s Design Feedback',
+          url: 'https://www.linkedin.com/in/karina-north-0000000000/',
+          type: 'linkedin'
         }
       ]
     },
@@ -410,6 +410,7 @@ function App() {
                       className="mt-2 text-sm text-blue-400 hover:text-blue-300 flex items-center gap-2"
                     >
                       {link.type === 'leetcode' && <SiLeetcode className="w-4 h-4" />}
+                      {link.type === 'linkedin' && <FaLinkedin className="w-4 h-4" />}
                       {link.text}
                     </a>
                   ))}
