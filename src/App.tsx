@@ -100,22 +100,22 @@ function App() {
                   {/* Mobile Social Links - Vertical Layout */}
                   <div className="flex flex-col gap-3 mb-8">
                     <h2 className="text-sm font-semibold text-blue-400">Connect</h2>
-                    <a href="https://www.linkedin.com/in/kevin-north" 
-                       target="_blank" 
-                       rel="noopener noreferrer" 
-                       className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors">
+                    <a href="https://www.linkedin.com/in/kevin-north"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors">
                       <FaLinkedin size={20} />
                       <span className="text-sm">LinkedIn</span>
                     </a>
-                    <a href="https://github.com/northkevin" 
-                       target="_blank" 
-                       rel="noopener noreferrer" 
-                       className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
+                    <a href="https://github.com/northkevin"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
                       <FaGithub size={20} />
                       <span className="text-sm">GitHub</span>
                     </a>
-                    <a href="mailto:contact@northkevin.com" 
-                       className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
+                    <a href="mailto:contact@northkevin.com"
+                      className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
                       <FaEnvelope size={20} />
                       <span className="text-sm">Email</span>
                     </a>
@@ -237,22 +237,22 @@ function App() {
                 {/* Social Links Column */}
                 <div className="w-[200px] flex flex-col gap-4 pl-8 border-l border-gray-700">
                   <h2 className="text-lg font-semibold text-blue-400">Connect</h2>
-                  <a href="https://www.linkedin.com/in/kevin-north" 
-                     target="_blank" 
-                     rel="noopener noreferrer" 
-                     className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors">
+                  <a href="https://www.linkedin.com/in/kevin-north"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors">
                     <FaLinkedin size={28} />
                     <span>LinkedIn</span>
                   </a>
-                  <a href="https://github.com/northkevin" 
-                     target="_blank" 
-                     rel="noopener noreferrer" 
-                     className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
+                  <a href="https://github.com/northkevin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
                     <FaGithub size={28} />
                     <span>GitHub</span>
                   </a>
-                  <a href="mailto:contact@northkevin.com" 
-                     className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
+                  <a href="mailto:contact@northkevin.com"
+                    className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
                     <FaEnvelope size={28} />
                     <span>Email</span>
                   </a>
@@ -267,10 +267,10 @@ function App() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="mb-16">
               <h2 className="text-3xl font-bold">
-                What I Can Solve For You
+                What Makes My Experience Different?
               </h2>
               <span className="text-xl text-blue-400 mt-2 block">
-                Real solutions from real experience
+                Proven impact across industries
               </span>
             </div>
 
