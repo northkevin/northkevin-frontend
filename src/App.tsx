@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FaLinkedin, FaGithub, FaAws, FaJava, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaAws, FaJava, FaEnvelope, FaGlobe } from 'react-icons/fa';
 import {
   SiTypescript,
   SiReact,
@@ -27,6 +27,18 @@ function App() {
 
   // TODO: Get this from the backend
   const recentLearnings = [
+    {
+      id: 6,
+      date: '2024-12-20',
+      content: 'I had the opportunity to chat with Donnie from Acorn.io this morning on a zoom call.  I\'m excited to see what they\'re building, it looks like it will be a great way for large companies to use AI to leverage their existing data.',
+      links: [
+        {
+          text: 'Acorn.io',
+          url: 'https://www.acorn.io/',
+          type: 'website'
+        }
+      ]
+    },
     {
       id: 5,
       date: '2024-12-19',
@@ -423,6 +435,7 @@ function App() {
                     >
                       {link.type === 'leetcode' && <SiLeetcode className="w-4 h-4" />}
                       {link.type === 'linkedin' && <FaLinkedin className="w-4 h-4" />}
+                      {link.type === 'website' && <FaGlobe className="w-4 h-4" />}
                       {link.text}
                     </a>
                   ))}
