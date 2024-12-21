@@ -40,6 +40,18 @@ function App() {
       ]
     },
     {
+      id: 4,
+      date: '2024-12-18',
+      content: 'Wrote a leetcode solution for writing Promise.all() in parallel, with O(n) time & O(n) space complexity.',
+      links: [
+        {
+          text: 'Execute Asynchronous Functions in Parallel',
+          url: 'https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/solutions/6161593/execute-asynchronous-functions-in-parall-outt',
+          type: 'leetcode'
+        }
+      ]
+    },
+    {
       id: 3,
       date: '2024-12-17',
       content: 'I was surprised to learn that Chrome browser has no limit on number of promises that can be running at once.  If we don\'t care about durations of a cache existing beyond a single DOM session, it will be faster to use promises for timing out keys than using a Map with expiration dates.',
