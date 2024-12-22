@@ -10,14 +10,14 @@ interface ApiEndpoint {
 const endpoints: ApiEndpoint[] = [
     {
         name: 'Hello',
-        path: '/api/hello', 
+        path: '/api/hello',
         method: 'GET',
         description: 'Basic hello world endpoint'
     },
     {
         name: 'Protected',
         path: '/api/dev/protected',
-        method: 'GET', 
+        method: 'GET',
         description: 'Test authenticated access'
     },
     {
@@ -36,9 +36,7 @@ const endpoints: ApiEndpoint[] = [
 
 function ApiTester() {
     const [results, setResults] = useState<Record<string, any>>({});
-    const backendUrl = process.env.NODE_ENV === 'development' 
-        ? 'http://localhost:8080'
-        : 'http://northkevin-backend-2.us-west-1.elasticbeanstalk.com';
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8080';
 
     const callEndpoint = async (endpoint: ApiEndpoint) => {
         const resultKey = `${endpoint.method} ${endpoint.path}`;

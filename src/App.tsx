@@ -18,9 +18,11 @@ import ApiTester from './components/ApiTester';
 
 function App() {
   const [message, setMessage] = useState('');
-  const backendUrl = process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:8080'
-    : 'http://northkevin-backend-2.us-west-1.elasticbeanstalk.com';
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || (
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:8080'
+      : 'https://northkevin-backend-production.up.railway.app'
+  );
 
   const [expandedLearnings, setExpandedLearnings] = useState<number[]>([]);
 
