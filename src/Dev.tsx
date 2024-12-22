@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import config from './config/env';
+import { fetchApi } from './utils/api';
+import { ApiError } from './utils/errorHandler';
 
 function Dev() {
     const [password, setPassword] = useState('');
@@ -12,31 +14,17 @@ function Dev() {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            console.log('Attempting login to:', `${backendUrl}/api/dev/login`);
-
-            const response = await fetch(`${backendUrl}/api/dev/login`, {
+            const data = await fetchApi<{ token: string }>('/api/dev/login', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ password }),
+                body: { password }
             });
 
-            console.log('Response status:', response.status);
-            const data = await response.json();
-            console.log('Response data:', data);
-
-            if (response.ok) {
-                localStorage.setItem('devToken', data.token);
-                setMessage('Login successful! Redirecting...');
-                setTimeout(() => navigate('/dev/api'), 1000);
-            } else {
-                setMessage(data.message || 'Login failed');
-            }
+            localStorage.setItem('devToken', data.token);
+            setMessage('Login successful! Redirecting...');
+            setTimeout(() => navigate('/dev/api'), 1000);
         } catch (error) {
-            console.error('Login error details:', error);
-            setMessage('Error connecting to server. Is the backend running on port 8080?');
+            const apiError = error as ApiError;
+            setMessage(apiError.message);
         }
     };
 

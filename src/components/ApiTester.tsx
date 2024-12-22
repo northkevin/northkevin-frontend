@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import config from '../config/env';
+import { fetchApi } from '../utils/api';
+import { ApiError } from '../utils/errorHandler';
 
 interface ApiEndpoint {
     name: string;
@@ -37,28 +38,28 @@ const endpoints: ApiEndpoint[] = [
 
 function ApiTester() {
     const [results, setResults] = useState<Record<string, any>>({});
-    const { backendUrl } = config;
 
     const callEndpoint = async (endpoint: ApiEndpoint) => {
         const resultKey = `${endpoint.method} ${endpoint.path}`;
         try {
-            const token = localStorage.getItem('devToken');
-            const response = await fetch(`${backendUrl}${endpoint.path}`, {
+            const data = await fetchApi(endpoint.path, {
                 method: endpoint.method,
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...(token && { 'Authorization': `Bearer ${token}` })
-                }
+                requiresAuth: endpoint.path.includes('/dev/') || endpoint.path.includes('/api/learnings')
             });
-            const data = await response.json();
+
             setResults(prev => ({
                 ...prev,
-                [resultKey]: { data, status: response.status }
+                [resultKey]: { data, status: 200 }
             }));
         } catch (error) {
+            const apiError = error as ApiError;
             setResults(prev => ({
                 ...prev,
-                [resultKey]: { error: 'Failed to fetch', status: 'error' }
+                [resultKey]: { 
+                    error: apiError.message, 
+                    status: apiError.status || 'error',
+                    code: apiError.code
+                }
             }));
         }
     };
