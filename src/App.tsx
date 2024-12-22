@@ -15,14 +15,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Dev from './Dev';
 import ApiTester from './components/ApiTester';
+import config from './config/env';
 
 function App() {
   const [message, setMessage] = useState('');
-  const backendUrl = process.env.REACT_APP_BACKEND_URL || (
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:8080'
-      : 'https://northkevin-backend-production.up.railway.app'
-  );
+  const { backendUrl } = config;
 
   const [expandedLearnings, setExpandedLearnings] = useState<number[]>([]);
 

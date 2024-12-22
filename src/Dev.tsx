@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import config from './config/env';
 
 function Dev() {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
-    const backendUrl = process.env.NODE_ENV === 'development'
-        ? 'http://localhost:8080'
-        : 'http://northkevin-backend-2.us-west-1.elasticbeanstalk.com';
+    const { backendUrl } = config;
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();

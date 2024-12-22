@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import config from '../config/env';
 
 interface ApiEndpoint {
     name: string;
@@ -36,7 +37,7 @@ const endpoints: ApiEndpoint[] = [
 
 function ApiTester() {
     const [results, setResults] = useState<Record<string, any>>({});
-    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8080';
+    const { backendUrl } = config;
 
     const callEndpoint = async (endpoint: ApiEndpoint) => {
         const resultKey = `${endpoint.method} ${endpoint.path}`;
