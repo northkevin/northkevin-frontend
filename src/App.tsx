@@ -13,6 +13,7 @@ import {
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './index.css';
+import './App.css';
 import Dev from './Dev';
 import ApiTester from './components/ApiTester';
 import config from './config/env';
@@ -223,7 +224,7 @@ function App() {
 
                           {/* Icon container */}
                           <div className="relative flex flex-col items-center p-4">
-                            <tech.icon 
+                            <tech.icon
                               className={`w-8 h-8 md:w-10 md:h-10 ${tech.hoverColor} transition-all duration-300`}
                             />
                             <span className="mt-3 text-xs md:text-sm text-gray-500 text-center">
@@ -270,8 +271,7 @@ function App() {
                                 rel="noopener noreferrer"
                                 className="group/link inline-flex items-center hover:opacity-80 transition-opacity"
                               >
-                                <h3 className="text-3xl font-semibold bg-clip-text text-transparent 
-                                              bg-gradient-to-r from-white to-gray-400">
+                                <h3 className="text-3xl font-semibold bg-clip-text text-white">
                                   SmartRent
                                 </h3>
                                 <div className="ml-3 p-2 rounded-full bg-gray-800/50 backdrop-blur-sm
@@ -290,18 +290,18 @@ function App() {
                               </p>
                             </div>
 
-                            {/* Key Metrics */}
+                            {/* SmartRent Key Metrics */}
                             <div className="grid grid-cols-3 gap-6">
-                              <div className="space-y-2">
-                                <p className="text-3xl font-bold text-blue-400">2.9M+</p>
+                              <div className="metric-container space-y-2">
+                                <p className="metric-value gradient-text-left">2.9M+</p>
                                 <p className="text-sm text-gray-400">Connected Devices</p>
                               </div>
-                              <div className="space-y-2">
-                                <p className="text-3xl font-bold text-blue-400">1.3M+</p>
+                              <div className="metric-container space-y-2">
+                                <p className="metric-value gradient-text-middle">1.3M+</p>
                                 <p className="text-sm text-gray-400">Rental Units</p>
                               </div>
-                              <div className="space-y-2">
-                                <p className="text-3xl font-bold text-blue-400">600+</p>
+                              <div className="metric-container space-y-2">
+                                <p className="metric-value gradient-text-right">600+</p>
                                 <p className="text-sm text-gray-400">Enterprise Clients</p>
                               </div>
                             </div>
@@ -313,7 +313,7 @@ function App() {
                               {/* Subtle glow effect */}
                               <div className="absolute inset-0 bg-blue-500/20 blur-2xl 
                                                 group-hover/image:bg-blue-500/30 transition-colors duration-500" />
-                              
+
                               {/* Image with parallax effect */}
                               <div className="relative transform transition-transform duration-700 ease-out
                                                 group-hover/image:scale-105 group-hover/image:translate-y-[-2%]">
@@ -343,7 +343,7 @@ function App() {
                               <a href="https://www.nationwide.com" target="_blank" rel="noopener noreferrer"
                                 className="group/link inline-flex items-center hover:opacity-80 transition-opacity">
                                 <h3 className="text-3xl font-semibold bg-clip-text text-transparent 
-                                              bg-gradient-to-r from-white to-gray-400">
+                                              text-white">
                                   Nationwide Insurance
                                 </h3>
                                 <div className="ml-3 p-2 rounded-full bg-gray-800/50 backdrop-blur-sm
@@ -362,18 +362,18 @@ function App() {
                               </p>
                             </div>
 
-                            {/* Key Metrics */}
+                            {/* Nationwide Key Metrics */}
                             <div className="grid grid-cols-3 gap-6">
-                              <div className="space-y-2">
-                                <p className="text-3xl font-bold text-blue-400">$50B+</p>
+                              <div className="metric-container space-y-2">
+                                <p className="metric-value gradient-text-left">$50B+</p>
                                 <p className="text-sm text-gray-400">Annual Revenue</p>
                               </div>
-                              <div className="space-y-2">
-                                <p className="text-3xl font-bold text-blue-400">30K+</p>
+                              <div className="metric-container space-y-2">
+                                <p className="metric-value gradient-text-middle">30K+</p>
                                 <p className="text-sm text-gray-400">Employees</p>
                               </div>
-                              <div className="space-y-2">
-                                <p className="text-3xl font-bold text-blue-400">Fortune</p>
+                              <div className="metric-container space-y-2">
+                                <p className="metric-value gradient-text-right">Fortune</p>
                                 <p className="text-sm text-gray-400">100 Company</p>
                               </div>
                             </div>
@@ -430,7 +430,7 @@ function App() {
                                           ${expandedLearnings.includes(learning.id) ? '' : 'line-clamp-2'}`}>
                               {learning.content}
                             </p>
-                            
+
                             {/* Meta information row */}
                             <div className="flex items-center justify-between">
                               <span className="text-xs text-gray-500">
@@ -472,7 +472,7 @@ function App() {
                                   ))}
                                 </div>
                               )}
-                              
+
                               {/* Links */}
                               {learning.links && learning.links.map(link => (
                                 <a

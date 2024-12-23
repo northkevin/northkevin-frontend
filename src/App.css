@@ -1,81 +1,36 @@
 /* App.css */
 
-/* Retain the spinning logo animation */
-.App-logo {
-  pointer-events: none;
+/* Add this to your existing CSS file */
+.gradient-text-left {
+  background-image: linear-gradient(to right, rgb(96, 165, 250), rgb(129, 140, 248));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.gradient-text-middle {
+  background-image: linear-gradient(to right, rgb(129, 140, 248), rgb(167, 139, 250));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.gradient-text-right {
+  background-image: linear-gradient(to right, rgb(167, 139, 250), rgb(192, 132, 252));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-.tech-icon-container {
+.metric-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  width: 100px;
-  /* Fixed width */
   text-align: center;
-  /* Center the text */
 }
 
-.tech-label {
-  font-size: 0.875rem;
-  opacity: 0.8;
-  word-wrap: break-word;
-  /* Allows words to break and wrap */
-  hyphens: auto;
-  /* Enables hyphenation */
-}
-
-.tech-icon-container:hover {
-  transform: translateY(-2px);
-  transition: transform 0.2s ease-in-out;
-}
-
-.tech-icon-container-primary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 5rem;
-  height: 5rem;
-  background-color: rgba(55, 65, 81, 0.5);
-  border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4px);
-  transition: all 0.3s;
-}
-
-.tech-icon-container-primary:hover {
-  transform: scale(1.05);
-}
-
-.tech-icon-container-secondary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4rem;
-  height: 4rem;
-  background-color: rgba(55, 65, 81, 0.3);
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4px);
-  transition: all 0.3s;
-}
-
-.tech-icon-container-secondary:hover {
-  transform: scale(1.05);
+.metric-value {
+  min-width: 120px;
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700;    /* font-bold */
 }
