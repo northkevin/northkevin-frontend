@@ -109,90 +109,81 @@ function App() {
                   <div className="w-full bg-gray-800">
                     <div className="max-w-6xl mx-auto px-6">
                       {/* Mobile Profile Layout */}
-                      <div className="flex flex-col w-full items-start md:hidden py-8">
-                        {/* Avatar Container with Social Links */}
-                        <div className="flex flex-col items-center mb-6">
-                          <div className="w-[120px] h-[120px] mb-3">
+                      <div className="flex flex-col w-full items-center md:hidden px-6 pt-12 pb-16">
+                        {/* Avatar + Social Container */}
+                        <div className="relative mb-8">
+                          {/* Larger, more prominent avatar */}
+                          <div className="w-[160px] h-[160px]">
                             <img
                               src={"/kevin-portrait.jpg"}
                               alt="Kevin"
-                              className="w-full h-full rounded-full object-cover"
+                              className="w-full h-full rounded-full object-cover shadow-lg"
                             />
                           </div>
-                          {/* Horizontal Social Links */}
-                          <div className="flex gap-4">
-                            <a href="https://www.linkedin.com/in/kevin-north"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-gray-300 hover:text-blue-400 transition-colors">
-                              <FaLinkedin size={24} />
-                            </a>
-                            <a href="https://github.com/northkevin"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-gray-300 hover:text-gray-100 transition-colors">
-                              <FaGithub size={24} />
-                            </a>
-                            <a href="mailto:contact@northkevin.com"
-                              className="text-gray-300 hover:text-gray-100 transition-colors">
-                              <FaEnvelope size={24} />
-                            </a>
+                          {/* Social links as an overlay band at bottom of avatar */}
+                          <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800/90 backdrop-blur-sm px-6 py-2 rounded-full shadow-lg">
+                            <div className="flex gap-6">
+                              <a href="https://www.linkedin.com/in/kevin-north"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-300 hover:text-blue-400 transition-colors">
+                                <FaLinkedin size={20} />
+                              </a>
+                              <a href="https://github.com/northkevin"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-300 hover:text-gray-100 transition-colors">
+                                <FaGithub size={20} />
+                              </a>
+                              <a href="mailto:contact@northkevin.com"
+                                className="text-gray-300 hover:text-gray-100 transition-colors">
+                                <FaEnvelope size={20} />
+                              </a>
+                            </div>
                           </div>
                         </div>
 
-                        {/* Info Container */}
-                        <div className="flex flex-col w-full">
-                          {/* Name and Title */}
-                          <div className="flex flex-col mb-6">
-                            <h1 className="text-2xl font-semibold mb-1">Kevin North</h1>
-                            <p className="text-base text-gray-300 mb-1">
-                              Software Engineer
-                            </p>
-                            <p className="text-sm text-gray-400">
-                              SmartRent.com • Nationwide, IT
-                            </p>
-                          </div>
+                        {/* Identity Container with improved typography and spacing */}
+                        <div className="text-center mb-12">
+                          <h1 className="text-3xl font-bold mb-2">Kevin North</h1>
+                          <p className="text-xl text-gray-300 mb-1">Software Engineer</p>
+                          <p className="text-sm text-gray-400">SmartRent.com • Nationwide, IT</p>
+                        </div>
 
-                          {/* Mobile Tech Stack Section */}
-                          <div className="w-full">
-                            <h2 className="text-base font-bold mb-4 text-blue-400">Weapons of Choice</h2>
-                            <div className="flex flex-wrap gap-4">
-                              <div className="tech-icon-container-small group">
-                                <SiTypescript className="w-8 h-8 group-hover:text-blue-500 transition-colors" />
-                                <span className="tech-label-small">TypeScript</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiReact size={30} className="group-hover:text-cyan-400 transition-colors" />
-                                <span className="tech-label-small">React</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiElixir size={30} className="group-hover:text-purple-500 transition-colors" />
-                                <span className="tech-label-small">Elixir</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiPostgresql size={30} className="group-hover:text-teal-500 transition-colors" />
-                                <span className="tech-label-small">PostgresSQL</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiNodedotjs size={30} className="group-hover:text-green-500 transition-colors" />
-                                <span className="tech-label-small">Node.js</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <FaAws size={30} className="group-hover:text-orange-400 transition-colors" />
-                                <span className="tech-label-small">AWS</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiTerraform size={30} className="group-hover:text-purple-600 transition-colors" />
-                                <span className="tech-label-small">Terraform</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiPython size={30} className="group-hover:text-blue-600 transition-colors" />
-                                <span className="tech-label-small">Python</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <FaJava size={30} className="group-hover:text-orange-600 transition-colors" />
-                                <span className="tech-label-small">Java</span>
-                              </div>
+                        {/* Tech Stack with visual hierarchy */}
+                        <div className="w-full">
+                          <h2 className="text-lg font-semibold text-blue-400 mb-6 text-center">
+                            Weapons of Choice
+                          </h2>
+                          <div className="grid grid-cols-3 gap-6 justify-items-center">
+                            {/* Primary tools */}
+                            <div className="tech-icon-container-primary">
+                              <SiTypescript className="w-10 h-10 text-blue-500" />
+                            </div>
+                            <div className="tech-icon-container-primary">
+                              <SiReact className="w-10 h-10 text-cyan-400" />
+                            </div>
+                            <div className="tech-icon-container-primary">
+                              <SiElixir className="w-10 h-10 text-purple-500" />
+                            </div>
+                            {/* Secondary tools with slightly smaller size */}
+                            <div className="tech-icon-container-secondary">
+                              <SiPostgresql className="w-8 h-8 text-teal-500" />
+                            </div>
+                            <div className="tech-icon-container-secondary">
+                              <SiNodedotjs className="w-8 h-8 text-green-500" />
+                            </div>
+                            <div className="tech-icon-container-secondary">
+                              <FaAws className="w-8 h-8 text-orange-400" />
+                            </div>
+                            <div className="tech-icon-container-secondary">
+                              <SiTerraform className="w-8 h-8 text-purple-600" />
+                            </div>
+                            <div className="tech-icon-container-secondary">
+                              <SiPython className="w-8 h-8 text-blue-600" />
+                            </div>
+                            <div className="tech-icon-container-secondary">
+                              <FaJava className="w-8 h-8 text-orange-600" />
                             </div>
                           </div>
                         </div>
