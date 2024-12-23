@@ -213,22 +213,20 @@ function App() {
 
                     <div className="grid grid-cols-3 gap-8 md:gap-12 max-w-3xl mx-auto">
                       {techStack.map((tech) => (
-                        <div key={tech.name} 
-                             className="group relative flex flex-col items-center"
+                        <div key={tech.name}
+                          className="group relative flex flex-col items-center"
                         >
                           {/* Hover effect background */}
                           <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-purple-500/10 
                                          rounded-2xl blur-xl opacity-0 group-hover:opacity-100 
                                          transition-all duration-500" />
-                          
+
                           {/* Icon container */}
                           <div className="relative flex flex-col items-center p-4">
                             <tech.icon 
-                              className={`w-8 h-8 md:w-10 md:h-10 text-gray-400 transition-all duration-300
-                                         group-hover:${tech.hoverColor} group-hover:scale-110`}
+                              className={`w-8 h-8 md:w-10 md:h-10 ${tech.hoverColor} transition-all duration-300`}
                             />
-                            <span className="mt-3 text-xs md:text-sm text-gray-500 text-center
-                                           group-hover:text-gray-300 transition-colors duration-300">
+                            <span className="mt-3 text-xs md:text-sm text-gray-500 text-center">
                               {tech.name}
                             </span>
                           </div>
@@ -270,18 +268,21 @@ function App() {
                               <a href="https://smartrent.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center group/link"
+                                className="group/link inline-flex items-center hover:opacity-80 transition-opacity"
                               >
                                 <h3 className="text-3xl font-semibold bg-clip-text text-transparent 
                                               bg-gradient-to-r from-white to-gray-400">
                                   SmartRent
                                 </h3>
-                                <svg className="w-6 h-6 ml-2 opacity-0 group-hover/link:opacity-100 
-                                              transform group-hover/link:translate-x-1 transition-all"
-                                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                </svg>
+                                <div className="ml-3 p-2 rounded-full bg-gray-800/50 backdrop-blur-sm
+                                     group-hover/link:bg-gray-700/50 transition-colors duration-300">
+                                  <svg className="w-5 h-5 text-gray-400 group-hover/link:text-white 
+                                                transform group-hover/link:translate-x-0.5 transition-all"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                  </svg>
+                                </div>
                               </a>
                               <p className="text-xl leading-relaxed text-gray-300">
                                 Scaling from Series B startup to NYSE public company (SMRT), pioneering IoT solutions
@@ -307,38 +308,53 @@ function App() {
                           </div>
 
                           <div className="order-1 md:order-2">
-                            <div className="relative aspect-video group/image">
-                              <div className="absolute inset-0 bg-blue-500/20 rounded-2xl blur-2xl 
-                                            group-hover/image:bg-blue-500/30 transition-colors duration-500" />
-                              <img
-                                src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3"
-                                alt="Smart Home Technology"
-                                className="relative w-full h-full object-cover rounded-2xl shadow-2xl 
-                                          ring-1 ring-white/10 group-hover/image:ring-blue-500/50 
-                                          transition-all duration-500"
-                              />
+                            {/* Work Experience Image */}
+                            <div className="relative aspect-video group/image overflow-hidden rounded-2xl">
+                              {/* Subtle glow effect */}
+                              <div className="absolute inset-0 bg-blue-500/20 blur-2xl 
+                                                group-hover/image:bg-blue-500/30 transition-colors duration-500" />
+                              
+                              {/* Image with parallax effect */}
+                              <div className="relative transform transition-transform duration-700 ease-out
+                                                group-hover/image:scale-105 group-hover/image:translate-y-[-2%]">
+                                <img
+                                  src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3"
+                                  alt="Smart Home Technology"
+                                  className="w-full h-full object-cover rounded-2xl shadow-2xl 
+                                                    ring-1 ring-white/10 group-hover/image:ring-blue-500/50 
+                                                    transition-all duration-700"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
 
                       {/* Nationwide Experience */}
-                      <div className="py-16">
-                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                      <div className="group relative">
+                        {/* Decorative gradient blur */}
+                        <div className="absolute -inset-x-4 -inset-y-4 z-0 bg-gradient-to-r from-blue-500/10 
+                                        to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 
+                                        transition-opacity duration-700 blur-xl" />
+
+                        <div className="relative grid md:grid-cols-2 gap-12 items-center">
                           <div className="order-2 md:order-1 space-y-8">
                             <div className="space-y-6">
                               <a href="https://www.nationwide.com" target="_blank" rel="noopener noreferrer"
-                                className="group/link inline-flex items-center">
+                                className="group/link inline-flex items-center hover:opacity-80 transition-opacity">
                                 <h3 className="text-3xl font-semibold bg-clip-text text-transparent 
                                               bg-gradient-to-r from-white to-gray-400">
                                   Nationwide Insurance
                                 </h3>
-                                <svg className="w-6 h-6 ml-2 opacity-0 group-hover/link:opacity-100 
-                                              transform group-hover/link:translate-x-1 transition-all"
-                                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                </svg>
+                                <div className="ml-3 p-2 rounded-full bg-gray-800/50 backdrop-blur-sm
+                                     group-hover/link:bg-gray-700/50 transition-colors duration-300">
+                                  <svg className="w-5 h-5 text-gray-400 group-hover/link:text-white 
+                                                transform group-hover/link:translate-x-0.5 transition-all"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                  </svg>
+                                </div>
                               </a>
                               <p className="text-xl leading-relaxed text-gray-300">
                                 Led enterprise-scale digital transformation initiatives at a Fortune 100 insurance company,
@@ -364,15 +380,17 @@ function App() {
                           </div>
 
                           <div className="order-1 md:order-2">
-                            <div className="relative aspect-video group/image">
-                              <div className="absolute inset-0 bg-blue-500/20 rounded-2xl blur-2xl 
+                            {/* Work Experience Image */}
+                            <div className="relative aspect-video group/image overflow-hidden rounded-2xl">
+                              {/* Subtle glow effect */}
+                              <div className="absolute inset-0 bg-blue-500/20 blur-2xl 
                                             group-hover/image:bg-blue-500/30 transition-colors duration-500" />
                               <img
-                                src="nationwide-office.jpg"
+                                src="/nationwide-office.jpg"
                                 alt="Corporate Office"
                                 className="relative w-full h-full object-cover rounded-2xl shadow-2xl 
                                           ring-1 ring-white/10 group-hover/image:ring-blue-500/50 
-                                          transition-all duration-500"
+                                          transition-all duration-700"
                               />
                             </div>
                           </div>
@@ -385,55 +403,37 @@ function App() {
                 {/* Brain Upgrades Section */}
                 <section className="w-full bg-[#0D1117] py-16 md:py-32 overflow-hidden">
                   <div className="container mx-auto px-6 max-w-6xl">
-                    {/* Header with improved animation */}
-                    <div className="mb-16 motion-safe:animate-fadeInUp">
+                    {/* Header with improved alignment */}
+                    <div className="mb-16 text-center">
                       <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Brain Upgrades
                       </h2>
-                      <p className="text-xl md:text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                      <p className="text-xl md:text-2xl bg-gradient-to-r from-blue-400 to-purple-400 
+                                    bg-clip-text text-transparent max-w-2xl mx-auto">
                         Recent learnings and discoveries
                       </p>
                     </div>
 
-                    {/* Grid with staggered animation */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Grid with improved layout */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       {recentLearnings.map((learning, index) => (
                         <div
                           key={learning.id}
-                          className="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 
+                          className="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 
                                     hover:bg-gray-700/50 transition-all duration-300
                                     motion-safe:animate-fadeInUp"
                           style={{ animationDelay: `${150 * index}ms` }}
                         >
-                          {/* Subtle gradient background on hover */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 
-                                         rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                          {/* Content with improved layout */}
-                          <div className="relative">
-                            <div className="flex items-start justify-between mb-3">
-                              <div className="flex-1">
-                                <p className={`text-sm text-gray-300 leading-relaxed
-                                              ${expandedLearnings.includes(learning.id) ? '' : 'line-clamp-2'}`}>
-                                  {learning.content}
-                                </p>
-                                {learning.content.length > 100 && (
-                                  <button
-                                    onClick={() => {
-                                      setExpandedLearnings(prev =>
-                                        prev.includes(learning.id)
-                                          ? prev.filter(id => id !== learning.id)
-                                          : [...prev, learning.id]
-                                      );
-                                    }}
-                                    className="text-xs text-blue-400/90 hover:text-blue-300 mt-2 
-                                              transition-colors duration-300"
-                                  >
-                                    {expandedLearnings.includes(learning.id) ? 'See less' : 'See more'}
-                                  </button>
-                                )}
-                              </div>
-                              <span className="text-xs text-gray-500 ml-4 whitespace-nowrap">
+                          {/* Content with improved spacing */}
+                          <div className="relative space-y-4">
+                            <p className={`text-sm text-gray-300 leading-relaxed
+                                          ${expandedLearnings.includes(learning.id) ? '' : 'line-clamp-2'}`}>
+                              {learning.content}
+                            </p>
+                            
+                            {/* Meta information row */}
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs text-gray-500">
                                 {new Date(learning.date).toLocaleDateString('en-US', {
                                   weekday: 'short',
                                   month: 'short',
@@ -441,45 +441,58 @@ function App() {
                                   timeZone: 'UTC'
                                 })}
                               </span>
+                              {learning.content.length > 100 && (
+                                <button
+                                  onClick={() => setExpandedLearnings(prev =>
+                                    prev.includes(learning.id)
+                                      ? prev.filter(id => id !== learning.id)
+                                      : [...prev, learning.id]
+                                  )}
+                                  className="text-xs text-blue-400/90 hover:text-blue-300
+                                            transition-colors duration-300"
+                                >
+                                  {expandedLearnings.includes(learning.id) ? 'See less' : 'See more'}
+                                </button>
+                              )}
                             </div>
 
-                            {/* Tags with improved styling */}
-                            {learning?.tags && learning?.tags?.length > 0 && (
-                              <div className="mt-3 flex flex-wrap gap-2">
-                                {learning?.tags && learning.tags.map(tag => (
-                                  <span
-                                    key={tag}
-                                    className="text-xs px-2.5 py-1 bg-gray-900/50 text-blue-400/90 
-                                              rounded-full ring-1 ring-blue-400/20 backdrop-blur-sm"
-                                  >
-                                    #{tag}
-                                  </span>
-                                ))}
-                              </div>
-                            )}
-
-                            {/* Links with improved hover states */}
-                            {learning.links && learning.links.map(link => (
-                              <a
-                                key={link.url}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group/link mt-3 text-sm text-blue-400/90 hover:text-blue-300 
-                                          flex items-center gap-2 transition-colors duration-300"
-                              >
-                                <span className="relative">
-                                  {link.type === 'leetcode' && <SiLeetcode className="w-4 h-4" />}
-                                  {link.type === 'linkedin' && <FaLinkedin className="w-4 h-4" />}
-                                  {link.type === 'website' && <FaGlobe className="w-4 h-4" />}
-                                </span>
-                                <span className="relative">
-                                  {link.text}
-                                  <span className="absolute -bottom-px left-0 w-full h-px bg-blue-400/0 
-                                         group-hover/link:bg-blue-400/50 transition-all duration-300" />
-                                </span>
-                              </a>
-                            ))}
+                            {/* Tags and Links Container */}
+                            <div className="flex flex-wrap items-center gap-3 pt-2">
+                              {/* Tags */}
+                              {learning?.tags?.length && (
+                                <div className="flex flex-wrap gap-2">
+                                  {learning.tags.map(tag => (
+                                    <span
+                                      key={tag}
+                                      className="text-xs px-2 py-0.5 bg-gray-900/50 text-gray-400 
+                                                rounded-full ring-1 ring-gray-800 backdrop-blur-sm"
+                                    >
+                                      #{tag}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                              
+                              {/* Links */}
+                              {learning.links && learning.links.map(link => (
+                                <a
+                                  key={link.url}
+                                  href={link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 
+                                            bg-gray-800/80 hover:bg-gray-700/80
+                                            text-xs text-gray-300 hover:text-white
+                                            rounded-full ring-1 ring-gray-700/50 backdrop-blur-sm
+                                            transition-all duration-300"
+                                >
+                                  {link.type === 'leetcode' && <SiLeetcode className="w-3 h-3" />}
+                                  {link.type === 'linkedin' && <FaLinkedin className="w-3 h-3" />}
+                                  {link.type === 'website' && <FaGlobe className="w-3 h-3" />}
+                                  <span>{link.text}</span>
+                                </a>
+                              ))}
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -508,20 +521,20 @@ function App() {
                       <div className="space-y-4">
                         <h3 className="text-sm font-medium text-gray-400">Quick Links</h3>
                         <div className="flex flex-col space-y-2">
-                          <a href="https://github.com/northkevin" 
-                             target="_blank"
-                             rel="noopener noreferrer"
-                             className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                          <a href="https://github.com/northkevin"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
                             GitHub Projects
                           </a>
                           <a href="https://www.linkedin.com/in/kevin-north"
-                             target="_blank"
-                             rel="noopener noreferrer"
-                             className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
                             LinkedIn Profile
                           </a>
                           <a href="mailto:contact@northkevin.com"
-                             className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                            className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
                             Contact
                           </a>
                         </div>
