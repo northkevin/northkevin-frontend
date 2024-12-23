@@ -109,17 +109,38 @@ function App() {
                   <div className="w-full bg-gray-800">
                     <div className="max-w-6xl mx-auto px-6">
                       {/* Mobile Profile Layout */}
-                      <div className="flex flex-col w-full md:hidden py-8">
-                        {/* Avatar Container */}
-                        <div className="w-[120px] h-[120px] mb-6">
-                          <img
-                            src={"/kevin-portrait.jpg"}
-                            alt="Kevin"
-                            className="w-full h-full rounded-full object-cover"
-                          />
+                      <div className="flex flex-col w-full items-start md:hidden py-8">
+                        {/* Avatar Container with Social Links */}
+                        <div className="flex flex-col items-center mb-6">
+                          <div className="w-[120px] h-[120px] mb-3">
+                            <img
+                              src={"/kevin-portrait.jpg"}
+                              alt="Kevin"
+                              className="w-full h-full rounded-full object-cover"
+                            />
+                          </div>
+                          {/* Horizontal Social Links */}
+                          <div className="flex gap-4">
+                            <a href="https://www.linkedin.com/in/kevin-north"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-gray-300 hover:text-blue-400 transition-colors">
+                              <FaLinkedin size={24} />
+                            </a>
+                            <a href="https://github.com/northkevin"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-gray-300 hover:text-gray-100 transition-colors">
+                              <FaGithub size={24} />
+                            </a>
+                            <a href="mailto:contact@northkevin.com"
+                              className="text-gray-300 hover:text-gray-100 transition-colors">
+                              <FaEnvelope size={24} />
+                            </a>
+                          </div>
                         </div>
 
-                        {/* Info and Social Links */}
+                        {/* Info Container */}
                         <div className="flex flex-col w-full">
                           {/* Name and Title */}
                           <div className="flex flex-col mb-6">
@@ -130,30 +151,6 @@ function App() {
                             <p className="text-sm text-gray-400">
                               SmartRent.com • Nationwide, IT
                             </p>
-                          </div>
-
-                          {/* Mobile Social Links - Vertical Layout */}
-                          <div className="flex flex-col gap-3 mb-8">
-                            <h2 className="text-sm font-semibold text-blue-400">Connect</h2>
-                            <a href="https://www.linkedin.com/in/kevin-north"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors">
-                              <FaLinkedin size={20} />
-                              <span className="text-sm">LinkedIn</span>
-                            </a>
-                            <a href="https://github.com/northkevin"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
-                              <FaGithub size={20} />
-                              <span className="text-sm">GitHub</span>
-                            </a>
-                            <a href="mailto:contact@northkevin.com"
-                              className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
-                              <FaEnvelope size={20} />
-                              <span className="text-sm">Email</span>
-                            </a>
                           </div>
 
                           {/* Mobile Tech Stack Section */}
