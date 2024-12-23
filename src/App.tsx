@@ -291,17 +291,17 @@ function App() {
                             </div>
 
                             {/* SmartRent Key Metrics */}
-                            <div className="grid grid-cols-3 gap-6">
+                            <div className="grid grid-cols-3 gap-6 justify-items-start">
                               <div className="metric-container space-y-2">
-                                <p className="metric-value gradient-text-left">2.9M+</p>
+                                <p className="metric-value gradient-text-left">1.9M+</p>
                                 <p className="text-sm text-gray-400">Connected Devices</p>
                               </div>
                               <div className="metric-container space-y-2">
-                                <p className="metric-value gradient-text-middle">1.3M+</p>
+                                <p className="metric-value gradient-text-middle">1.1M+</p>
                                 <p className="text-sm text-gray-400">Rental Units</p>
                               </div>
                               <div className="metric-container space-y-2">
-                                <p className="metric-value gradient-text-right">600+</p>
+                                <p className="metric-value gradient-text-right">400+</p>
                                 <p className="text-sm text-gray-400">Enterprise Clients</p>
                               </div>
                             </div>
@@ -363,13 +363,13 @@ function App() {
                             </div>
 
                             {/* Nationwide Key Metrics */}
-                            <div className="grid grid-cols-3 gap-6">
+                            <div className="grid grid-cols-3 gap-6 justify-items-start">
                               <div className="metric-container space-y-2">
-                                <p className="metric-value gradient-text-left">$50B+</p>
+                                <p className="metric-value gradient-text-left">$48.7B</p>
                                 <p className="text-sm text-gray-400">Annual Revenue</p>
                               </div>
                               <div className="metric-container space-y-2">
-                                <p className="metric-value gradient-text-middle">30K+</p>
+                                <p className="metric-value gradient-text-middle">25K+</p>
                                 <p className="text-sm text-gray-400">Employees</p>
                               </div>
                               <div className="metric-container space-y-2">
