@@ -17,6 +17,7 @@ import Dev from './Dev';
 import ApiTester from './components/ApiTester';
 import config from './config/env';
 import ErrorBoundary from './components/ErrorBoundary';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -110,38 +111,44 @@ function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/dev" element={<Dev />} />
           <Route path="/dev/api" element={<ApiTester />} />
           <Route path="/" element={
             <div className="App flex flex-col bg-gray-900">
               <main className="w-full">
-                {/* Hero Section - Fix background and container issues */}
-                <section className="relative w-full bg-gradient-to-b from-gray-900 to-gray-800 py-16 md:py-24">
+                {/* Hero Section - Add subtle animation and improved typography */}
+                <section className="relative w-full bg-gradient-to-b from-gray-900 to-gray-800 py-16 md:py-24 
+                                    motion-safe:animate-fadeIn">
+                  {/* Improve gradient subtlety */}
                   <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_50%)]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.08),transparent_50%)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05),transparent_50%)]
+                                    motion-safe:animate-pulse [animation-duration:8s]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.05),transparent_50%)]
+                                    motion-safe:animate-pulse [animation-duration:12s]" />
                   </div>
 
+                  {/* Improve typography spacing and rhythm */}
                   <div className="relative container mx-auto px-6 max-w-7xl">
-                    {/* Profile and Content Container */}
                     <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 mb-24">
-                      {/* Profile Image and Social Links Container */}
                       <div className="relative flex flex-col items-center">
-                        {/* Profile Image */}
-                        <div className="relative w-48 md:w-64 aspect-square mb-8">
-                          <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+                        {/* Profile image with improved animation */}
+                        <div className="relative w-48 md:w-64 aspect-square mb-8 motion-safe:animate-fadeInUp">
+                          <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-3xl 
+                                         motion-safe:animate-pulse [animation-duration:4s]" />
                           <img
                             src="/kevin-portrait.jpg"
                             alt="Kevin North"
                             className="relative rounded-full object-cover w-full h-full shadow-2xl
-                                       ring-2 ring-white/10 transition-transform duration-500
-                                       hover:scale-105 hover:ring-blue-400/50"
+                                     ring-1 ring-white/5 transition-all duration-700
+                                     hover:scale-[1.02] hover:ring-blue-400/30
+                                     motion-safe:animate-fadeIn"
                           />
                         </div>
 
-                        {/* Social Links */}
-                        <div className="flex items-center gap-6 mt-2">
+                        {/* Social links with improved hover states */}
+                        <div className="flex items-center gap-8 mt-4 motion-safe:animate-fadeInUp [animation-delay:200ms]">
                           <a href="https://www.linkedin.com/in/kevin-north"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -173,48 +180,60 @@ function App() {
                         </div>
                       </div>
 
-                      {/* Hero Content */}
-                      <div className="flex-1 text-center md:text-left">
-                        <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent 
-                                       bg-gradient-to-r from-white to-gray-400">
+                      {/* Hero content with improved animation and spacing */}
+                      <div className="flex-1 text-center md:text-left space-y-8 motion-safe:animate-fadeInUp [animation-delay:100ms]">
+                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent 
+                                     bg-gradient-to-r from-white via-white to-gray-400">
                           Hi, I'm Kevin
                         </h1>
-                        <p className="mt-6 text-xl md:text-2xl text-gray-400 leading-relaxed">
+                        <p className="text-xl md:text-2xl text-gray-400/90 leading-relaxed tracking-wide">
                           Software engineer crafting elegant solutions at the intersection of
-                          <span className="text-gray-200 font-medium"> innovation </span>
+                          <span className="text-white/90 font-medium"> innovation </span>
                           and
-                          <span className="text-gray-200 font-medium"> reliability</span>
+                          <span className="text-white/90 font-medium"> reliability</span>
                         </p>
                       </div>
                     </div>
+                  </div>
+                </section>
 
-                    {/* Tech Stack Section */}
-                    <div className="w-full max-w-4xl mx-auto">
-                      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-16">
+                {/* Tech Stack Section */}
+                <section className="w-full py-20 md:py-32">
+                  <div className="w-full max-w-4xl mx-auto px-6">
+                    <div className="text-center space-y-4 mb-20">
+                      <h2 className="text-3xl md:text-4xl font-bold">
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400/90 to-purple-400/90">
                           Weapons of Choice
                         </span>
                       </h2>
-                      <p className="text-lg md:text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+                      <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto">
                         Tools and technologies I use to build exceptional digital experiences
                       </p>
+                    </div>
 
-                      <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
-                        {techStack.map((tech) => (
-                          <div key={tech.name} className="group relative flex justify-center">
-                            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-purple-500/20 
-                                            rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            <div className="relative flex flex-col items-center p-4">
-                              <tech.icon className={`w-8 h-8 md:w-10 md:h-10 text-gray-400 
-                                                 group-hover:${tech.hoverColor} transition-colors duration-300`} />
-                              <span className="mt-2 text-xs md:text-sm text-gray-500 text-center
-                                             group-hover:text-gray-300 transition-colors duration-300">
-                                {tech.name}
-                              </span>
-                            </div>
+                    <div className="grid grid-cols-3 gap-8 md:gap-12 max-w-3xl mx-auto">
+                      {techStack.map((tech) => (
+                        <div key={tech.name} 
+                             className="group relative flex flex-col items-center"
+                        >
+                          {/* Hover effect background */}
+                          <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-purple-500/10 
+                                         rounded-2xl blur-xl opacity-0 group-hover:opacity-100 
+                                         transition-all duration-500" />
+                          
+                          {/* Icon container */}
+                          <div className="relative flex flex-col items-center p-4">
+                            <tech.icon 
+                              className={`w-8 h-8 md:w-10 md:h-10 text-gray-400 transition-all duration-300
+                                         group-hover:${tech.hoverColor} group-hover:scale-110`}
+                            />
+                            <span className="mt-3 text-xs md:text-sm text-gray-500 text-center
+                                           group-hover:text-gray-300 transition-colors duration-300">
+                              {tech.name}
+                            </span>
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </section>
@@ -364,9 +383,10 @@ function App() {
                 </section>
 
                 {/* Brain Upgrades Section */}
-                <section className="w-full bg-[#0D1117] py-16 md:py-32">
+                <section className="w-full bg-[#0D1117] py-16 md:py-32 overflow-hidden">
                   <div className="container mx-auto px-6 max-w-6xl">
-                    <div className="mb-16">
+                    {/* Header with improved animation */}
+                    <div className="mb-16 motion-safe:animate-fadeInUp">
                       <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Brain Upgrades
                       </h2>
@@ -375,81 +395,177 @@ function App() {
                       </p>
                     </div>
 
+                    {/* Grid with staggered animation */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {recentLearnings.map((learning) => (
+                      {recentLearnings.map((learning, index) => (
                         <div
                           key={learning.id}
-                          className="bg-gray-700 rounded-lg p-6 hover:bg-gray-600 transition-colors"
+                          className="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 
+                                    hover:bg-gray-700/50 transition-all duration-300
+                                    motion-safe:animate-fadeInUp"
+                          style={{ animationDelay: `${150 * index}ms` }}
                         >
-                          <div className="flex items-start justify-between">
-                            <div className="flex-1">
-                              <p className={`text-sm text-gray-300 ${expandedLearnings.includes(learning.id) ? '' : 'line-clamp-2'}`}>
-                                {learning.content}
-                              </p>
-                              {learning.content.length > 100 && (
-                                <button
-                                  onClick={() => {
-                                    setExpandedLearnings(prev =>
-                                      prev.includes(learning.id)
-                                        ? prev.filter(id => id !== learning.id)
-                                        : [...prev, learning.id]
-                                    );
-                                  }}
-                                  className="text-xs text-blue-400 hover:text-blue-300 mt-1"
-                                >
-                                  {expandedLearnings.includes(learning.id) ? 'See less' : 'See more'}
-                                </button>
-                              )}
-                            </div>
-                            <span className="text-xs text-gray-400 ml-4 whitespace-nowrap">
-                              {new Date(learning.date).toLocaleDateString('en-US', {
-                                weekday: 'short',
-                                month: 'short',
-                                day: 'numeric',
-                                timeZone: 'UTC'
-                              })}
-                            </span>
-                          </div>
-                          <div className="mt-2 flex gap-2">
-                            {learning?.tags?.length && learning.tags.map(tag => (
-                              <span
-                                key={tag}
-                                className="text-xs px-2 py-0.5 bg-gray-800 text-blue-400 rounded-full"
-                              >
-                                #{tag}
+                          {/* Subtle gradient background on hover */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 
+                                         rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                          {/* Content with improved layout */}
+                          <div className="relative">
+                            <div className="flex items-start justify-between mb-3">
+                              <div className="flex-1">
+                                <p className={`text-sm text-gray-300 leading-relaxed
+                                              ${expandedLearnings.includes(learning.id) ? '' : 'line-clamp-2'}`}>
+                                  {learning.content}
+                                </p>
+                                {learning.content.length > 100 && (
+                                  <button
+                                    onClick={() => {
+                                      setExpandedLearnings(prev =>
+                                        prev.includes(learning.id)
+                                          ? prev.filter(id => id !== learning.id)
+                                          : [...prev, learning.id]
+                                      );
+                                    }}
+                                    className="text-xs text-blue-400/90 hover:text-blue-300 mt-2 
+                                              transition-colors duration-300"
+                                  >
+                                    {expandedLearnings.includes(learning.id) ? 'See less' : 'See more'}
+                                  </button>
+                                )}
+                              </div>
+                              <span className="text-xs text-gray-500 ml-4 whitespace-nowrap">
+                                {new Date(learning.date).toLocaleDateString('en-US', {
+                                  weekday: 'short',
+                                  month: 'short',
+                                  day: 'numeric',
+                                  timeZone: 'UTC'
+                                })}
                               </span>
+                            </div>
+
+                            {/* Tags with improved styling */}
+                            {learning?.tags && learning?.tags?.length > 0 && (
+                              <div className="mt-3 flex flex-wrap gap-2">
+                                {learning?.tags && learning.tags.map(tag => (
+                                  <span
+                                    key={tag}
+                                    className="text-xs px-2.5 py-1 bg-gray-900/50 text-blue-400/90 
+                                              rounded-full ring-1 ring-blue-400/20 backdrop-blur-sm"
+                                  >
+                                    #{tag}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
+
+                            {/* Links with improved hover states */}
+                            {learning.links && learning.links.map(link => (
+                              <a
+                                key={link.url}
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group/link mt-3 text-sm text-blue-400/90 hover:text-blue-300 
+                                          flex items-center gap-2 transition-colors duration-300"
+                              >
+                                <span className="relative">
+                                  {link.type === 'leetcode' && <SiLeetcode className="w-4 h-4" />}
+                                  {link.type === 'linkedin' && <FaLinkedin className="w-4 h-4" />}
+                                  {link.type === 'website' && <FaGlobe className="w-4 h-4" />}
+                                </span>
+                                <span className="relative">
+                                  {link.text}
+                                  <span className="absolute -bottom-px left-0 w-full h-px bg-blue-400/0 
+                                         group-hover/link:bg-blue-400/50 transition-all duration-300" />
+                                </span>
+                              </a>
                             ))}
                           </div>
-                          {learning.links && learning.links.map(link => (
-                            <a
-                              key={link.url}
-                              href={link.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="mt-2 text-sm text-blue-400 hover:text-blue-300 flex items-center gap-2"
-                            >
-                              {link.type === 'leetcode' && <SiLeetcode className="w-4 h-4" />}
-                              {link.type === 'linkedin' && <FaLinkedin className="w-4 h-4" />}
-                              {link.type === 'website' && <FaGlobe className="w-4 h-4" />}
-                              {link.text}
-                            </a>
-                          ))}
                         </div>
                       ))}
                     </div>
                   </div>
                 </section>
 
-                {/* Footer */}
-                <footer className="w-full bg-[#0A0F1A] border-t border-gray-800/30">
-                  <div className="container mx-auto px-6 py-8 max-w-6xl">
-                    <div className="flex flex-col items-start space-y-2">
-                      <p className="text-sm text-gray-400">
-                        Built with React & Tailwind CSS • Deployed on AWS
-                      </p>
-                      <p className="text-sm text-gray-400">
-                        © {new Date().getFullYear()} Kevin North • All rights reserved
-                      </p>
+                {/* Footer with improved design and animations */}
+                <footer className="relative w-full bg-[#0A0F1A] border-t border-gray-800/30 overflow-hidden">
+                  {/* Subtle gradient background */}
+                  <div className="absolute inset-0">
+                    <div className="absolute inset-0 bg-gradient-to-t from-blue-500/[0.02] to-transparent" />
+                  </div>
+
+                  <div className="relative container mx-auto px-6 py-12 max-w-6xl">
+                    <div className="grid md:grid-cols-3 gap-8 items-start">
+                      {/* Branding */}
+                      <div className="space-y-4">
+                        <h3 className="text-lg font-semibold text-white">Kevin North</h3>
+                        <p className="text-sm text-gray-400 leading-relaxed">
+                          Software engineer crafting elegant solutions for complex problems
+                        </p>
+                      </div>
+
+                      {/* Quick Links */}
+                      <div className="space-y-4">
+                        <h3 className="text-sm font-medium text-gray-400">Quick Links</h3>
+                        <div className="flex flex-col space-y-2">
+                          <a href="https://github.com/northkevin" 
+                             target="_blank"
+                             rel="noopener noreferrer"
+                             className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                            GitHub Projects
+                          </a>
+                          <a href="https://www.linkedin.com/in/kevin-north"
+                             target="_blank"
+                             rel="noopener noreferrer"
+                             className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                            LinkedIn Profile
+                          </a>
+                          <a href="mailto:contact@northkevin.com"
+                             className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                            Contact
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Tech Stack */}
+                      <div className="space-y-4">
+                        <h3 className="text-sm font-medium text-gray-400">Built With</h3>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="text-xs px-2.5 py-1 bg-gray-800/50 text-gray-400 rounded-full 
+                                        ring-1 ring-gray-700/50 backdrop-blur-sm">
+                            React
+                          </span>
+                          <span className="text-xs px-2.5 py-1 bg-gray-800/50 text-gray-400 rounded-full 
+                                        ring-1 ring-gray-700/50 backdrop-blur-sm">
+                            TypeScript
+                          </span>
+                          <span className="text-xs px-2.5 py-1 bg-gray-800/50 text-gray-400 rounded-full 
+                                        ring-1 ring-gray-700/50 backdrop-blur-sm">
+                            Tailwind CSS
+                          </span>
+                          <span className="text-xs px-2.5 py-1 bg-gray-800/50 text-gray-400 rounded-full 
+                                        ring-1 ring-gray-700/50 backdrop-blur-sm">
+                            AWS
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Copyright */}
+                    <div className="mt-12 pt-8 border-t border-gray-800/30">
+                      <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-sm text-gray-500">
+                          © {new Date().getFullYear()} Kevin North. All rights reserved.
+                        </p>
+                        <div className="flex items-center gap-6">
+                          <a href="#privacy" className="text-sm text-gray-500 hover:text-gray-300 transition-colors duration-200">
+                            Privacy Policy
+                          </a>
+                          <a href="#terms" className="text-sm text-gray-500 hover:text-gray-300 transition-colors duration-200">
+                            Terms of Use
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </footer>
