@@ -114,27 +114,63 @@ function App() {
           <Route path="/dev" element={<Dev />} />
           <Route path="/dev/api" element={<ApiTester />} />
           <Route path="/" element={
-            <div className="App flex flex-col min-h-screen">
-              <header className="flex-1 flex flex-col items-start justify-start bg-gray-800 text-white">
-                {/* Hero Section Container */}
-                <div className="relative min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+            <div className="App flex flex-col bg-gray-900">
+              <main className="w-full">
+                {/* Hero Section - Fix background and container issues */}
+                <section className="relative w-full bg-gradient-to-b from-gray-900 to-gray-800 py-16 md:py-24">
                   <div className="absolute inset-0">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_50%)]" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.08),transparent_50%)]" />
                   </div>
 
-                  <div className="relative max-w-7xl mx-auto px-6 pt-24 pb-32">
-                    <div className="flex flex-col md:flex-row items-center gap-16">
-                      {/* Profile Image */}
-                      <div className="relative w-48 md:w-64 aspect-square">
-                        <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-                        <img
-                          src="/kevin-portrait.jpg"
-                          alt="Kevin North"
-                          className="relative rounded-full object-cover w-full h-full shadow-2xl
-                                     ring-2 ring-white/10 transition-transform duration-500
-                                     hover:scale-105 hover:ring-blue-400/50"
-                        />
+                  <div className="relative container mx-auto px-6 max-w-7xl">
+                    {/* Profile and Content Container */}
+                    <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 mb-24">
+                      {/* Profile Image and Social Links Container */}
+                      <div className="relative flex flex-col items-center">
+                        {/* Profile Image */}
+                        <div className="relative w-48 md:w-64 aspect-square mb-8">
+                          <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+                          <img
+                            src="/kevin-portrait.jpg"
+                            alt="Kevin North"
+                            className="relative rounded-full object-cover w-full h-full shadow-2xl
+                                       ring-2 ring-white/10 transition-transform duration-500
+                                       hover:scale-105 hover:ring-blue-400/50"
+                          />
+                        </div>
+
+                        {/* Social Links */}
+                        <div className="flex items-center gap-6 mt-2">
+                          <a href="https://www.linkedin.com/in/kevin-north"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative"
+                          >
+                            <div className="absolute inset-0 bg-blue-400/20 rounded-full blur-xl opacity-0 
+                                            group-hover:opacity-100 transition-all duration-300" />
+                            <FaLinkedin className="relative w-6 h-6 text-gray-400 group-hover:text-blue-400 
+                                              transform transition-all duration-300 group-hover:scale-110" />
+                          </a>
+                          <a href="https://github.com/northkevin"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative"
+                          >
+                            <div className="absolute inset-0 bg-white/20 rounded-full blur-xl opacity-0 
+                                            group-hover:opacity-100 transition-all duration-300" />
+                            <FaGithub className="relative w-6 h-6 text-gray-400 group-hover:text-white 
+                                              transform transition-all duration-300 group-hover:scale-110" />
+                          </a>
+                          <a href="mailto:contact@northkevin.com"
+                            className="group relative"
+                          >
+                            <div className="absolute inset-0 bg-purple-400/20 rounded-full blur-xl opacity-0 
+                                            group-hover:opacity-100 transition-all duration-300" />
+                            <FaEnvelope className="relative w-6 h-6 text-gray-400 group-hover:text-purple-400 
+                                              transform transition-all duration-300 group-hover:scale-110" />
+                          </a>
+                        </div>
                       </div>
 
                       {/* Hero Content */}
@@ -145,19 +181,23 @@ function App() {
                         </h1>
                         <p className="mt-6 text-xl md:text-2xl text-gray-400 leading-relaxed">
                           Software engineer crafting elegant solutions at the intersection of
-                          <span className="text-blue-400"> innovation</span> and
-                          <span className="text-blue-400"> reliability</span>
+                          <span className="text-gray-200 font-medium"> innovation </span>
+                          and
+                          <span className="text-gray-200 font-medium"> reliability</span>
                         </p>
                       </div>
                     </div>
 
                     {/* Tech Stack Section */}
-                    <div className="max-w-4xl mx-auto mt-8">
+                    <div className="w-full max-w-4xl mx-auto">
                       <h2 className="text-2xl md:text-3xl font-semibold text-center mb-16">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400/90 to-purple-400/90">
                           Weapons of Choice
                         </span>
                       </h2>
+                      <p className="text-lg md:text-xl text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+                        Tools and technologies I use to build exceptional digital experiences
+                      </p>
 
                       <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
                         {techStack.map((tech) => (
@@ -177,18 +217,18 @@ function App() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
 
                 {/* Work Experience Section */}
-                <div className="relative overflow-hidden">
-                  {/* Subtle animated background */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+                <section className="relative w-full bg-[#0A0F1A] py-16 md:py-32">
+                  <div className="absolute inset-0">
+                    <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-transparent to-gray-900/50" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
                   </div>
 
-                  <div className="relative max-w-6xl mx-auto px-6 py-32">
+                  <div className="relative container mx-auto px-6 max-w-6xl">
                     <div className="space-y-6 mb-24 text-center">
-                      <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                      <h2 className="text-4xl md:text-5xl font-bold text-white">
                         What Makes My Experience Different?
                       </h2>
                       <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
@@ -321,18 +361,18 @@ function App() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
 
-                {/* New Brain Upgrades Section */}
-                <div className="w-full bg-gray-800 py-20">
-                  <div className="max-w-6xl mx-auto px-6">
+                {/* Brain Upgrades Section */}
+                <section className="w-full bg-[#0D1117] py-16 md:py-32">
+                  <div className="container mx-auto px-6 max-w-6xl">
                     <div className="mb-16">
-                      <h2 className="text-3xl font-bold">
+                      <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Brain Upgrades
                       </h2>
-                      <span className="text-xl text-blue-400 mt-2 block">
+                      <p className="text-xl md:text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                         Recent learnings and discoveries
-                      </span>
+                      </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -398,11 +438,11 @@ function App() {
                       ))}
                     </div>
                   </div>
-                </div>
+                </section>
 
                 {/* Footer */}
-                <div className="w-full bg-gray-800">
-                  <div className="max-w-6xl mx-auto px-6 py-8">
+                <footer className="w-full bg-[#0A0F1A] border-t border-gray-800/30">
+                  <div className="container mx-auto px-6 py-8 max-w-6xl">
                     <div className="flex flex-col items-start space-y-2">
                       <p className="text-sm text-gray-400">
                         Built with React & Tailwind CSS • Deployed on AWS
@@ -412,9 +452,8 @@ function App() {
                       </p>
                     </div>
                   </div>
-                </div>
-
-              </header>
+                </footer>
+              </main>
             </div>
           } />
         </Routes>
