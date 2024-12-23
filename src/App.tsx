@@ -24,6 +24,19 @@ function App() {
 
   const [expandedLearnings, setExpandedLearnings] = useState<number[]>([]);
 
+  // Define tech stack data
+  const techStack = [
+    { name: 'TypeScript', icon: SiTypescript, hoverColor: 'text-blue-500' },
+    { name: 'React', icon: SiReact, hoverColor: 'text-cyan-400' },
+    { name: 'Elixir', icon: SiElixir, hoverColor: 'text-purple-500' },
+    { name: 'PostgreSQL', icon: SiPostgresql, hoverColor: 'text-teal-500' },
+    { name: 'Node.js', icon: SiNodedotjs, hoverColor: 'text-green-500' },
+    { name: 'AWS', icon: FaAws, hoverColor: 'text-orange-400' },
+    { name: 'Terraform', icon: SiTerraform, hoverColor: 'text-purple-600' },
+    { name: 'Python', icon: SiPython, hoverColor: 'text-blue-600' },
+    { name: 'Java', icon: FaJava, hoverColor: 'text-orange-600' }
+  ];
+
   useEffect(() => {
     fetch(`${backendUrl}/api/hello`)
       .then((res) => res.json())
@@ -104,263 +117,206 @@ function App() {
             <div className="App flex flex-col min-h-screen">
               <header className="flex-1 flex flex-col items-start justify-start bg-gray-800 text-white">
                 {/* Hero Section Container */}
-                <div className="mx-auto flex flex-col md:flex-row items-start justify-start w-full">
-                  {/* Content Container */}
-                  <div className="w-full bg-gray-800">
-                    <div className="max-w-6xl mx-auto px-6">
-                      {/* Mobile Profile Layout */}
-                      <div className="flex flex-col w-full items-center md:hidden px-6 pt-12 pb-16">
-                        {/* Avatar + Social Container */}
-                        <div className="relative mb-8">
-                          {/* Larger, more prominent avatar */}
-                          <div className="w-[160px] h-[160px]">
-                            <img
-                              src={"/kevin-portrait.jpg"}
-                              alt="Kevin"
-                              className="w-full h-full rounded-full object-cover shadow-lg"
-                            />
-                          </div>
-                          {/* Social links as an overlay band at bottom of avatar */}
-                          <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800/90 backdrop-blur-sm px-6 py-2 rounded-full shadow-lg">
-                            <div className="flex gap-6">
-                              <a href="https://www.linkedin.com/in/kevin-north"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-300 hover:text-blue-400 transition-colors">
-                                <FaLinkedin size={20} />
-                              </a>
-                              <a href="https://github.com/northkevin"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-300 hover:text-gray-100 transition-colors">
-                                <FaGithub size={20} />
-                              </a>
-                              <a href="mailto:contact@northkevin.com"
-                                className="text-gray-300 hover:text-gray-100 transition-colors">
-                                <FaEnvelope size={20} />
-                              </a>
-                            </div>
-                          </div>
-                        </div>
+                <div className="relative min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+                  <div className="absolute inset-0">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_50%)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.08),transparent_50%)]" />
+                  </div>
 
-                        {/* Identity Container with improved typography and spacing */}
-                        <div className="text-center mb-12">
-                          <h1 className="text-3xl font-bold mb-2">Kevin North</h1>
-                          <p className="text-xl text-gray-300 mb-1">Software Engineer</p>
-                          <p className="text-sm text-gray-400">SmartRent.com • Nationwide, IT</p>
-                        </div>
-
-                        {/* Tech Stack with visual hierarchy */}
-                        <div className="w-full">
-                          <h2 className="text-lg font-semibold text-blue-400 mb-6 text-center">
-                            Weapons of Choice
-                          </h2>
-                          <div className="grid grid-cols-3 gap-6 justify-items-center">
-                            {/* Primary tools */}
-                            <div className="tech-icon-container-primary">
-                              <SiTypescript className="w-10 h-10 text-blue-500" />
-                            </div>
-                            <div className="tech-icon-container-primary">
-                              <SiReact className="w-10 h-10 text-cyan-400" />
-                            </div>
-                            <div className="tech-icon-container-primary">
-                              <SiElixir className="w-10 h-10 text-purple-500" />
-                            </div>
-                            {/* Secondary tools with slightly smaller size */}
-                            <div className="tech-icon-container-secondary">
-                              <SiPostgresql className="w-8 h-8 text-teal-500" />
-                            </div>
-                            <div className="tech-icon-container-secondary">
-                              <SiNodedotjs className="w-8 h-8 text-green-500" />
-                            </div>
-                            <div className="tech-icon-container-secondary">
-                              <FaAws className="w-8 h-8 text-orange-400" />
-                            </div>
-                            <div className="tech-icon-container-secondary">
-                              <SiTerraform className="w-8 h-8 text-purple-600" />
-                            </div>
-                            <div className="tech-icon-container-secondary">
-                              <SiPython className="w-8 h-8 text-blue-600" />
-                            </div>
-                            <div className="tech-icon-container-secondary">
-                              <FaJava className="w-8 h-8 text-orange-600" />
-                            </div>
-                          </div>
-                        </div>
+                  <div className="relative max-w-7xl mx-auto px-6 pt-24 pb-32">
+                    <div className="flex flex-col md:flex-row items-center gap-16">
+                      {/* Profile Image */}
+                      <div className="relative w-48 md:w-64 aspect-square">
+                        <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+                        <img
+                          src="/kevin-portrait.jpg"
+                          alt="Kevin North"
+                          className="relative rounded-full object-cover w-full h-full shadow-2xl
+                                     ring-2 ring-white/10 transition-transform duration-500
+                                     hover:scale-105 hover:ring-blue-400/50"
+                        />
                       </div>
 
-                      {/* Desktop Layout */}
-                      <div className="hidden md:flex w-full py-8">
-                        {/* Main Content Area */}
-                        <div className="flex-1">
-                          {/* Profile Info */}
-                          <div className="flex gap-8 mb-8">
-                            {/* Avatar */}
-                            <div className="w-[250px] flex-shrink-0">
-                              <img
-                                src={"/kevin-portrait.jpg"}
-                                alt="Kevin"
-                                className="w-full h-auto aspect-square rounded-full object-cover"
-                              />
-                            </div>
+                      {/* Hero Content */}
+                      <div className="flex-1 text-center md:text-left">
+                        <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent 
+                                       bg-gradient-to-r from-white to-gray-400">
+                          Hi, I'm Kevin
+                        </h1>
+                        <p className="mt-6 text-xl md:text-2xl text-gray-400 leading-relaxed">
+                          Software engineer crafting elegant solutions at the intersection of
+                          <span className="text-blue-400"> innovation</span> and
+                          <span className="text-blue-400"> reliability</span>
+                        </p>
+                      </div>
+                    </div>
 
-                            {/* Text Content */}
-                            <div className="flex flex-col justify-center">
-                              <h1 className="text-4xl font-bold mb-2">Hi, I'm Kevin</h1>
-                              <p className="text-xl font-semibold">
-                                Software engineer and certified duct tape programmer
-                              </p>
-                            </div>
-                          </div>
+                    {/* Tech Stack Section */}
+                    <div className="max-w-4xl mx-auto mt-8">
+                      <h2 className="text-2xl md:text-3xl font-semibold text-center mb-16">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                          Weapons of Choice
+                        </span>
+                      </h2>
 
-                          {/* Tech Stack */}
-                          <div className="mt-8">
-                            <h2 className="text-xl font-bold mb-4 text-blue-400">Weapons of Choice</h2>
-                            <div className="flex flex-wrap gap-4">
-                              <div className="tech-icon-container-small group">
-                                <SiTypescript className="w-8 h-8 group-hover:text-blue-500 transition-colors" />
-                                <span className="tech-label-small">TypeScript</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiReact size={30} className="group-hover:text-cyan-400 transition-colors" />
-                                <span className="tech-label-small">React</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiElixir size={30} className="group-hover:text-purple-500 transition-colors" />
-                                <span className="tech-label-small">Elixir</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiPostgresql size={30} className="group-hover:text-teal-500 transition-colors" />
-                                <span className="tech-label-small">PostgresSQL</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiNodedotjs size={30} className="group-hover:text-green-500 transition-colors" />
-                                <span className="tech-label-small">Node.js</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <FaAws size={30} className="group-hover:text-orange-400 transition-colors" />
-                                <span className="tech-label-small">AWS</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiTerraform size={30} className="group-hover:text-purple-600 transition-colors" />
-                                <span className="tech-label-small">Terraform</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <SiPython size={30} className="group-hover:text-blue-600 transition-colors" />
-                                <span className="tech-label-small">Python</span>
-                              </div>
-                              <div className="tech-icon-container-small group">
-                                <FaJava size={30} className="group-hover:text-orange-600 transition-colors" />
-                                <span className="tech-label-small">Java</span>
-                              </div>
+                      <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+                        {techStack.map((tech) => (
+                          <div key={tech.name} className="group relative flex justify-center">
+                            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-purple-500/20 
+                                            rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="relative flex flex-col items-center p-4">
+                              <tech.icon className={`w-8 h-8 md:w-10 md:h-10 text-gray-400 
+                                                 group-hover:${tech.hoverColor} transition-colors duration-300`} />
+                              <span className="mt-2 text-xs md:text-sm text-gray-500 text-center
+                                             group-hover:text-gray-300 transition-colors duration-300">
+                                {tech.name}
+                              </span>
                             </div>
                           </div>
-                        </div>
-
-                        {/* Social Links Column */}
-                        <div className="w-[200px] flex flex-col gap-4 pl-8 border-l border-gray-700">
-                          <h2 className="text-lg font-semibold text-blue-400">Connect</h2>
-                          <a href="https://www.linkedin.com/in/kevin-north"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors">
-                            <FaLinkedin size={28} />
-                            <span>LinkedIn</span>
-                          </a>
-                          <a href="https://github.com/northkevin"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
-                            <FaGithub size={28} />
-                            <span>GitHub</span>
-                          </a>
-                          <a href="mailto:contact@northkevin.com"
-                            className="flex items-center gap-3 text-gray-300 hover:text-gray-100 transition-colors">
-                            <FaEnvelope size={28} />
-                            <span>Email</span>
-                          </a>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Work Experience Section */}
-                <div className="w-full bg-gray-900 py-20">
-                  <div className="max-w-6xl mx-auto px-6">
-                    <div className="mb-16">
-                      <h2 className="text-3xl font-bold">
+                <div className="relative overflow-hidden">
+                  {/* Subtle animated background */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
+                  </div>
+
+                  <div className="relative max-w-6xl mx-auto px-6 py-32">
+                    <div className="space-y-6 mb-24 text-center">
+                      <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
                         What Makes My Experience Different?
                       </h2>
-                      <span className="text-xl text-blue-400 mt-2 block">
-                        Proven impact across industries
-                      </span>
+                      <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
+                        Proven impact across industries, from startup innovation to enterprise scale
+                      </p>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-24">
+                    {/* Experience Cards */}
+                    <div className="space-y-32">
                       {/* SmartRent Experience */}
-                      <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <div className="order-2 md:order-1">
-                          <div className="flex items-center gap-4 mb-4">
-                            <a href="https://smartrent.com"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="group flex items-center gap-2 hover:text-blue-400 transition-colors">
-                              <h3 className="text-2xl font-bold">SmartRent</h3>
-                              <svg className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity"
-                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                              </svg>
-                            </a>
+                      <div className="group relative">
+                        {/* Decorative gradient blur */}
+                        <div className="absolute -inset-x-4 -inset-y-4 z-0 bg-gradient-to-r from-blue-500/10 
+                                        to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 
+                                        transition-opacity duration-700 blur-xl" />
+
+                        <div className="relative grid md:grid-cols-2 gap-12 items-center">
+                          <div className="order-2 md:order-1 space-y-8">
+                            <div className="space-y-4">
+                              <a href="https://smartrent.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center group/link"
+                              >
+                                <h3 className="text-3xl font-semibold bg-clip-text text-transparent 
+                                              bg-gradient-to-r from-white to-gray-400">
+                                  SmartRent
+                                </h3>
+                                <svg className="w-6 h-6 ml-2 opacity-0 group-hover/link:opacity-100 
+                                              transform group-hover/link:translate-x-1 transition-all"
+                                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                              </a>
+                              <p className="text-xl leading-relaxed text-gray-300">
+                                Scaling from Series B startup to NYSE public company (SMRT), pioneering IoT solutions
+                                that revolutionized property management through integrated smart home technology.
+                              </p>
+                            </div>
+
+                            {/* Key Metrics */}
+                            <div className="grid grid-cols-3 gap-6">
+                              <div className="space-y-2">
+                                <p className="text-3xl font-bold text-blue-400">2.9M+</p>
+                                <p className="text-sm text-gray-400">Connected Devices</p>
+                              </div>
+                              <div className="space-y-2">
+                                <p className="text-3xl font-bold text-blue-400">1.3M+</p>
+                                <p className="text-sm text-gray-400">Rental Units</p>
+                              </div>
+                              <div className="space-y-2">
+                                <p className="text-3xl font-bold text-blue-400">600+</p>
+                                <p className="text-sm text-gray-400">Enterprise Clients</p>
+                              </div>
+                            </div>
                           </div>
-                          <p className="text-xl leading-relaxed">
-                            Scaling SmartRent from Series B startup to NYSE public company (SMRT), wearing multiple hats as developer,
-                            tester, and product innovator. Built IoT solutions managing 2.9M+ live connected devices across 1.3M rental
-                            units, transforming property management for 600+ enterprise clients. Pioneered smart home technology that
-                            revolutionized the PropTech industry, driving adoption from early-stage startup to market leader.
-                          </p>
-                        </div>
-                        <div className="order-1 md:order-2 aspect-video">
-                          <img
-                            src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3"
-                            alt="Smart Home Technology"
-                            className="w-full h-full object-cover rounded-lg shadow-2xl hover:scale-105 transition-transform duration-300"
-                          />
+
+                          <div className="order-1 md:order-2">
+                            <div className="relative aspect-video group/image">
+                              <div className="absolute inset-0 bg-blue-500/20 rounded-2xl blur-2xl 
+                                            group-hover/image:bg-blue-500/30 transition-colors duration-500" />
+                              <img
+                                src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3"
+                                alt="Smart Home Technology"
+                                className="relative w-full h-full object-cover rounded-2xl shadow-2xl 
+                                          ring-1 ring-white/10 group-hover/image:ring-blue-500/50 
+                                          transition-all duration-500"
+                              />
+                            </div>
+                          </div>
                         </div>
                       </div>
 
                       {/* Nationwide Experience */}
-                      <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <div className="order-2">
-                          <div className="flex items-center gap-4 mb-4">
-                            <a href="https://www.nationwide.com"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="group flex items-center gap-2 hover:text-blue-400 transition-colors">
-                              <h3 className="text-2xl font-bold">Nationwide, IT</h3>
-                              <svg className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity"
-                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                              </svg>
-                            </a>
+                      <div className="py-16">
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                          <div className="order-2 md:order-1 space-y-8">
+                            <div className="space-y-6">
+                              <a href="https://www.nationwide.com" target="_blank" rel="noopener noreferrer"
+                                className="group/link inline-flex items-center">
+                                <h3 className="text-3xl font-semibold bg-clip-text text-transparent 
+                                              bg-gradient-to-r from-white to-gray-400">
+                                  Nationwide Insurance
+                                </h3>
+                                <svg className="w-6 h-6 ml-2 opacity-0 group-hover/link:opacity-100 
+                                              transform group-hover/link:translate-x-1 transition-all"
+                                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                              </a>
+                              <p className="text-xl leading-relaxed text-gray-300">
+                                Led enterprise-scale digital transformation initiatives at a Fortune 100 insurance company,
+                                modernizing legacy systems and implementing cloud-native solutions.
+                              </p>
+                            </div>
+
+                            {/* Key Metrics */}
+                            <div className="grid grid-cols-3 gap-6">
+                              <div className="space-y-2">
+                                <p className="text-3xl font-bold text-blue-400">$50B+</p>
+                                <p className="text-sm text-gray-400">Annual Revenue</p>
+                              </div>
+                              <div className="space-y-2">
+                                <p className="text-3xl font-bold text-blue-400">30K+</p>
+                                <p className="text-sm text-gray-400">Employees</p>
+                              </div>
+                              <div className="space-y-2">
+                                <p className="text-3xl font-bold text-blue-400">Fortune</p>
+                                <p className="text-sm text-gray-400">100 Company</p>
+                              </div>
+                            </div>
                           </div>
-                          <p className="text-xl leading-relaxed">
-                            5 years transforming the insurance sector through innovative IT solutions,
-                            architecting and developing enterprise-scale applications for policy management,
-                            claims processing, and surety bonds across diverse technology stacks.
-                            Delivered high-stakes solutions that balanced lightning-fast policy processing,
-                            precision-focused claims handling, and complex surety systems,
-                            demonstrating how technical excellence drives bottom-line business impact.
-                          </p>
-                        </div>
-                        <div className="order-1 aspect-video">
-                          <img
-                            src="/nationwide-09839-0167.jpg"
-                            alt="Nationwide IT"
-                            className="w-full h-full object-cover rounded-lg shadow-2xl hover:scale-105 transition-transform duration-300"
-                          />
+
+                          <div className="order-1 md:order-2">
+                            <div className="relative aspect-video group/image">
+                              <div className="absolute inset-0 bg-blue-500/20 rounded-2xl blur-2xl 
+                                            group-hover/image:bg-blue-500/30 transition-colors duration-500" />
+                              <img
+                                src="nationwide-office.jpg"
+                                alt="Corporate Office"
+                                className="relative w-full h-full object-cover rounded-2xl shadow-2xl 
+                                          ring-1 ring-white/10 group-hover/image:ring-blue-500/50 
+                                          transition-all duration-500"
+                              />
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
