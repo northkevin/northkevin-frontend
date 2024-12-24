@@ -1,12 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { useLearnings } from '../hooks/useLearnings';
 import { SiLeetcode } from 'react-icons/si';
 import { FaLinkedin, FaGlobe } from 'react-icons/fa';
 
 export function RecentLearnings() {
     const [expandedLearnings, setExpandedLearnings] = useState<number[]>([]);
-    const loadMoreRef = useRef<HTMLDivElement>(null);
-
     const {
         data,
         isLoading,
@@ -15,24 +13,6 @@ export function RecentLearnings() {
         hasNextPage,
         isFetchingNextPage
     } = useLearnings();
-
-    // Intersection Observer for infinite scroll
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
-                    fetchNextPage();
-                }
-            },
-            { threshold: 0.5 }
-        );
-
-        if (loadMoreRef.current) {
-            observer.observe(loadMoreRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
     if (isLoading) {
         return (
@@ -134,12 +114,9 @@ export function RecentLearnings() {
                 ))}
             </div>
 
-            {/* Load More UI */}
+            {/* Load More Button */}
             {hasNextPage && (
-                <div
-                    ref={loadMoreRef}
-                    className="flex flex-col items-center py-8 space-y-4"
-                >
+                <div className="flex flex-col items-center py-8 space-y-4">
                     {isFetchingNextPage ? (
                         <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500" />
                     ) : (
@@ -150,7 +127,7 @@ export function RecentLearnings() {
                             <button
                                 onClick={() => fetchNextPage()}
                                 className="px-4 py-2 bg-gray-700/50 hover:bg-gray-600/50 
-                                 text-gray-300 rounded-full text-sm transition-colors"
+                                text-gray-300 rounded-full text-sm transition-colors"
                             >
                                 Load More
                             </button>

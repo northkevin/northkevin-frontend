@@ -23,14 +23,6 @@ import { QueryProvider } from './providers/QueryProvider';
 import { RecentLearnings } from './components/RecentLearnings';
 
 function App() {
-  const [message, setMessage] = useState('');
-  const { backendUrl } = config;
-
-  useEffect(() => {
-    fetch(`${backendUrl}/api/hello`)
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  }, []);
 
   // Define tech stack data
   const techStack = [
