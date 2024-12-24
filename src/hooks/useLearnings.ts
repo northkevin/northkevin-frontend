@@ -1,12 +1,14 @@
-import { useQuery } from '@tanstack/react-query';
-import { getLearnings } from '../api/learnings';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { getLearnings, LearningsResponse } from '../api/learnings';
 
 export function useLearnings() {
-  return useQuery({
-    queryKey: ['learnings'],
-    queryFn: getLearnings,
-    staleTime: 1000 * 60 * 5, // 5 minutes
-    retry: 2,
-    refetchOnWindowFocus: false,
-  });
+    return useInfiniteQuery<LearningsResponse, Error>({
+        queryKey: ['learnings'],
+        queryFn: ({ pageParam }) => getLearnings({
+            limit: 6,
+            cursor: typeof pageParam === 'string' ? pageParam : undefined
+        }),
+        getNextPageParam: (lastPage) => lastPage.nextCursor,
+        initialPageParam: undefined
+    });
 }
