@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useLearnings } from '../hooks/useLearnings';
-import { SiLeetcode } from 'react-icons/si';
-import { FaLinkedin, FaGlobe } from 'react-icons/fa';
+import { LearningLink } from './LearningLink';
 
 export function RecentLearnings() {
     const [expandedLearnings, setExpandedLearnings] = useState<number[]>([]);
@@ -91,22 +90,12 @@ export function RecentLearnings() {
                                 )}
 
                                 {learning.links?.map(link => (
-                                    <a
+                                    <LearningLink
                                         key={link.url}
-                                        href={link.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 px-2.5 py-0.5 
-                            bg-gray-800/80 hover:bg-gray-700/80
-                            text-xs text-gray-300 hover:text-white
-                            rounded-full ring-1 ring-gray-700/50 backdrop-blur-sm
-                            transition-all duration-300"
-                                    >
-                                        {link.type === 'leetcode' && <SiLeetcode className="w-3 h-3" />}
-                                        {link.type === 'linkedin' && <FaLinkedin className="w-3 h-3" />}
-                                        {link.type === 'website' && <FaGlobe className="w-3 h-3" />}
-                                        <span>{link.text}</span>
-                                    </a>
+                                        text={link.text}
+                                        url={link.url}
+                                        type={link.type}
+                                    />
                                 ))}
                             </div>
                         </div>
