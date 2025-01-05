@@ -137,21 +137,35 @@ function App() {
                             </div>
                           </div>
 
-                          {/* Hero content with improved animation and spacing */}
+                          {/* Hero content with improved typography and spacing */}
                           <div className="flex-1 text-center md:text-left space-y-8 motion-safe:animate-fadeInUp [animation-delay:100ms]">
                             <h1
                               className="text-4xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent
-                                       bg-gradient-to-r from-white via-white to-gray-400"
+                                           bg-gradient-to-r from-white via-white to-gray-400"
                             >
                               Hi, I'm Kevin
                             </h1>
-                            <p className="text-xl md:text-2xl text-gray-400/90 leading-relaxed tracking-wide">
-                              Building software taught me code.
-                              <span className="text-white/90 font-medium">
-                                Coffee walks with engineers
-                              </span>{" "}
-                              taught me everything else
-                            </p>
+
+                            {/* Two-line format for better readability */}
+                            <div className="space-y-2">
+                              <p className="text-xl md:text-2xl text-gray-400/90 leading-relaxed tracking-wide">
+                                <span className="text-gray-400/90">
+                                  Building software taught me to code.
+                                </span>
+                              </p>
+                              <p className="text-xl md:text-2xl leading-relaxed tracking-wide">
+                                <span className="text-white/90 font-medium">
+                                  Coffee walks with engineers{" "}
+                                </span>
+                                <span className="text-gray-400/90">
+                                  taught me{" "}
+                                </span>
+                                <span className="bg-gradient-to-r from-blue-400/90 to-purple-400/90 bg-clip-text text-transparent font-medium">
+                                  everything else
+                                </span>
+                                <span className="text-gray-400/90">.</span>
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
