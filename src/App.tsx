@@ -150,7 +150,7 @@ function App() {
                             <div className="space-y-2">
                               <p className="text-xl md:text-2xl text-gray-400/90 leading-relaxed tracking-wide">
                                 <span className="text-gray-400/90">
-                                  Building software taught me to code.
+                                  Building software teaches me to code.
                                 </span>
                               </p>
                               <p className="text-xl md:text-2xl leading-relaxed tracking-wide">
@@ -158,7 +158,7 @@ function App() {
                                   Coffee walks with my team{" "}
                                 </span>
                                 <span className="text-gray-400/90">
-                                  reveals{" "}
+                                  teach me{" "}
                                 </span>
                                 <span className="bg-gradient-to-r from-blue-400/90 to-purple-400/90 bg-clip-text text-transparent font-medium">
                                   everything else
