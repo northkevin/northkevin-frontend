@@ -155,10 +155,10 @@ function App() {
                               </p>
                               <p className="text-xl md:text-2xl leading-relaxed tracking-wide">
                                 <span className="text-white/90 font-medium">
-                                  Coffee walks with engineers{" "}
+                                  Coffee walks with my team{" "}
                                 </span>
                                 <span className="text-gray-400/90">
-                                  taught me{" "}
+                                  reveals{" "}
                                 </span>
                                 <span className="bg-gradient-to-r from-blue-400/90 to-purple-400/90 bg-clip-text text-transparent font-medium">
                                   everything else
